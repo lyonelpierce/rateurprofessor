@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@clerk/nextjs";
 
 import { Button } from "./ui/button";
 
 const Info = () => {
+  const { isSignedIn } = useAuth();
   return (
     <section className="flex flex-col items-center justify-center py-8 gap-8 max-w-7xl w-full h-full">
       <p className="text-3xl text-center font-bold">
@@ -40,11 +44,13 @@ const Info = () => {
           <p className="font-semibold text-2xl">Califica tu Universidad</p>
         </li>
       </ul>
-      <Link href="/sign-up">
-        <Button className="font-bold rounded-full" size="lg">
-          Crear una Cuenta
-        </Button>
-      </Link>
+      {!isSignedIn && (
+        <Link href="/sign-up">
+          <Button className="font-bold rounded-full" size="lg">
+            Crear una Cuenta
+          </Button>
+        </Link>
+      )}
     </section>
   );
 };

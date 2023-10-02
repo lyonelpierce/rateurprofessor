@@ -7,14 +7,14 @@ import { Button } from "./ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { useAuth } from "@clerk/nextjs";
 
-const Navbar = () => {
+const NavbarProfile = () => {
   const { isSignedIn } = useAuth();
 
   return (
-    <nav className="fixed top-0 w-full bg-white h-20">
+    <nav className="fixed top-0 w-full bg-black h-20">
       <div className="flex max-w-7xl justify-between items-center mx-auto h-full">
         <Link href="/">
-          <Logo fill="#000" text="#fff" />
+          <Logo fill="#fff" text="#000" />
         </Link>
         <div className="flex">
           {!isSignedIn ? (
@@ -40,4 +40,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarProfile;

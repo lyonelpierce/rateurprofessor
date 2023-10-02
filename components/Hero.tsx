@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import { Input } from "@/components/ui/input";
@@ -112,17 +113,26 @@ const Hero = () => {
                 ) : (
                   suggestions
                     .filter((_, index) => index < 5)
-                    .map((university) => (
-                      <li
-                        key={university.id}
-                        className="flex items-center gap-4 p-1 w-full text-sm transition-colors hover:bg-gray-950 cursor-pointer hover:text-white"
+                    .map((item, i) => (
+                      <Link
+                        href={
+                          selectedOption === "profesor"
+                            ? `/profesor/${item.id}`
+                            : `/universidad/${item.id}`
+                        }
+                        key={i}
                       >
-                        <GraduationCap className="ml-4" />
-                        <div className="p-4">
-                          <p className="font-bold">{university.name}</p>
-                          <p className="font-semibold">{university.location}</p>
-                        </div>
-                      </li>
+                        <li
+                          key={item.id}
+                          className="flex items-center gap-4 p-1 w-full text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
+                        >
+                          <GraduationCap className="ml-4" />
+                          <div className="p-4">
+                            <p className="font-bold">{item.name}</p>
+                            <p className="font-semibold">{item.location}</p>
+                          </div>
+                        </li>
+                      </Link>
                     ))
                 )}
               </ul>
