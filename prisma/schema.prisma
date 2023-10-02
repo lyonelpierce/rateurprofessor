@@ -21,8 +21,10 @@ model University {
   name        String
   category    String
   location    String
+  regimen     String
+  tipo        String
   professors  Professor[]
-  courses     Course[]   // Add this line to establish a many-to-many relationship
+  courses     Course[] 
   reviews     Review[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -34,7 +36,7 @@ model Professor {
   userId        String       @unique
   university    University   @relation(fields: [universityId], references: [id])
   universityId  String
-  courses       Course[]     // Add this line to establish a many-to-many relationship
+  courses       Course[]   
   reviews       Review[]
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt

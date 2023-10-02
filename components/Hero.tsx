@@ -104,7 +104,7 @@ const Hero = () => {
               className="p-0"
               onOpenAutoFocus={(e) => e.preventDefault()}
             >
-              <ul>
+              <ul className="rounded-3xl overflow-hidden">
                 {suggestions.length === 0 ? (
                   <li className="flex items-center justify-center text-sm p-4">
                     No se encontraron resultados.
@@ -115,7 +115,7 @@ const Hero = () => {
                     .map((university) => (
                       <li
                         key={university.id}
-                        className="flex items-center gap-4 p-1 w-full text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
+                        className="flex items-center gap-4 p-1 w-full text-sm transition-colors hover:bg-gray-950 cursor-pointer hover:text-white"
                       >
                         <GraduationCap className="ml-4" />
                         <div className="p-4">
