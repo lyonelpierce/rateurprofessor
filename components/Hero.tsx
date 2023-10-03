@@ -43,9 +43,9 @@ const Hero = () => {
     try {
       let endpoint = "";
       if (selectedOption === "profesor") {
-        endpoint = "/api/professor";
+        endpoint = "/api/search/professor";
       } else if (selectedOption === "universidad") {
-        endpoint = "/api/university";
+        endpoint = "/api/search/university";
       }
 
       const response = await fetch(endpoint);
