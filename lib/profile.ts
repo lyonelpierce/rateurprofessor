@@ -9,6 +9,7 @@ export const getUniversity = async (id: string) => {
         id: id,
       },
     });
+
     return university;
   } catch (error) {
     console.error("Error fetching university", error);
@@ -23,6 +24,7 @@ export const getProfessor = async (id: string) => {
         id: id,
       },
     });
+
     return professor;
   } catch (error) {
     console.error("Error fetching professor", error);

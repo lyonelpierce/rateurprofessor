@@ -10,13 +10,17 @@ export async function GET(req: Request) {
 
   try {
     const universities = await getUniversity(id);
+
+    if (!universities) {
+      return new NextResponse("Not found", { status: 404 });
+    }
+
     return new Response(JSON.stringify(universities), {
       headers: {
         "content-type": "application/json",
       },
     });
   } catch (error) {
-    console.log(error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

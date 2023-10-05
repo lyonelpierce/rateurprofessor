@@ -1,29 +1,10 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import UniversityType from "@/types/University";
+
 import { Button } from "./ui/button";
 
-const ProfileInfo = () => {
-  const [university, setUniversity] = useState({} as any);
-
-  const pathname = usePathname();
-  const id = pathname.split("/universidad/")[1];
-
-  const fetchUniversity = async () => {
-    try {
-      const response = await fetch(`/api/profile/university/${id}`);
-      if (response.ok) {
-        const data = await response.json();
-        setUniversity(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  fetchUniversity();
-
+const ProfileInfo = ({ university }: any) => {
   return (
     <section className="mt-20 w-full bg-white shadow-md p-8">
       <div className="max-w-7xl mx-auto">
