@@ -20,15 +20,17 @@ const NavbarProfile = () => {
           {!isSignedIn ? (
             <>
               <Link href="/sign-in">
-                <Button
-                  variant="outline"
-                  className="border-0 font-bold hover:bg-transparent"
-                >
+                <Button className="border-0 font-bold hover:bg-white hover:text-black">
                   Iniciar Sesión
                 </Button>
               </Link>
               <Link href="/sign-up">
-                <Button className="font-bold">Crear una Cuenta</Button>
+                <Button
+                  className="font-bold bg-transparent text-white"
+                  variant="outline"
+                >
+                  Crear una Cuenta
+                </Button>
               </Link>
             </>
           ) : (
