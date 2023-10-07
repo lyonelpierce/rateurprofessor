@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import useSWR from "swr";
 
 import { Input } from "@/components/ui/input";
 import {
@@ -24,6 +25,8 @@ interface Search {
   name: string;
   location?: string;
 }
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Hero = () => {
   const [suggestions, setSuggestions] = useState<Search[]>([]);

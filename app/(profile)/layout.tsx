@@ -2,7 +2,6 @@
 
 import Footer from "@/components/Footer";
 import NavbarProfile from "@/components/NavbarProfile";
-import ProfileInfo from "@/components/ProfileInfo";
 
 const LandingLayout = ({ children }: { children: React.ReactNode }) => {
   return (
