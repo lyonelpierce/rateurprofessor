@@ -6,13 +6,6 @@ import useSWR from "swr";
 
 import { Input } from "@/components/ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -31,46 +24,28 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const Hero = () => {
   const [suggestions, setSuggestions] = useState<Search[]>([]);
   const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("profesor");
   const [searchText, setSearchText] = useState("");
 
+  const { data, error } = useSWR(
+    searchText.length > 0 ? "/api/search/university" : null,
+    fetcher
+  );
+
   useEffect(() => {
-    fetchSuggestions();
-  }, [selectedOption, searchText]);
-
-  const fetchSuggestions = async () => {
-    if (searchText.length > 0) {
-      setOpen(true);
+    setOpen(searchText.length > 0);
+    if (data) {
+      const filteredSuggestions = data.filter((item: Search) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
     }
-
-    try {
-      let endpoint = "";
-      if (selectedOption === "profesor") {
-        endpoint = "/api/search/professor";
-      } else if (selectedOption === "universidad") {
-        endpoint = "/api/search/university";
-      }
-
-      const response = await fetch(endpoint);
-      if (response.ok) {
-        const data = await response.json();
-
-        const filteredSuggestions = data.filter((item: Search) =>
-          item.name.toLowerCase().includes(searchText.toLowerCase())
-        );
-
-        setSuggestions(filteredSuggestions);
-      }
-    } catch (error) {
-      console.error("Error fetching suggestions", error);
-    }
-  };
+  }, [data, searchText]);
 
   return (
     <section className="flex items-center w-full bg-gray-100 h-full">
       <div className="flex flex-col items-center justify-center max-w-7xl mx-auto">
         <p className="text-3xl font-semibold mb-5 text-center">
-          Encuentra tu <span className="font-bold"> Universidad/Profesor </span>
+          Empieza encontrando tu <span className="font-bold"> Universidad</span>
         </p>
         <div className="flex w-full">
           <Popover open={open} onOpenChange={setOpen}>
@@ -80,25 +55,9 @@ const Hero = () => {
               onClick={(e) => e.preventDefault()}
             >
               <div className="w-full">
-                <Select
-                  defaultValue={selectedOption}
-                  onValueChange={(value) => setSelectedOption(value)}
-                >
-                  <SelectTrigger className="w-[250px] p-7 rounded-l-full focus:ring-0 focus:ring-offset-0 border-r-0">
-                    <SelectValue placeholder="Seleccionar" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="profesor" className="cursor-pointer">
-                      Profesor
-                    </SelectItem>
-                    <SelectItem value="universidad" className="cursor-pointer">
-                      Universidad
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
                 <Input
-                  placeholder="Buscar..."
-                  className="rounded-r-full p-7 focus-visible:ring-0 focus-visible:ring-offset-0"
+                  placeholder="Buscar universidad..."
+                  className="rounded-full p-7 focus-visible:ring-0 focus-visible:ring-offset-0"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                 />
@@ -117,14 +76,7 @@ const Hero = () => {
                   suggestions
                     .filter((_, index) => index < 5)
                     .map((item, i) => (
-                      <Link
-                        href={
-                          selectedOption === "profesor"
-                            ? `/profesor/${item.id}`
-                            : `/universidad/${item.id}`
-                        }
-                        key={i}
-                      >
+                      <Link href={`/universidad/${item.id}`} key={i}>
                         <li
                           key={item.id}
                           className="flex items-center gap-4 p-1 w-full text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"

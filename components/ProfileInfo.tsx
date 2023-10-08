@@ -18,11 +18,21 @@ const ProfileInfo = ({ university }: any) => {
           {pathname.includes("calificar") && "Calificar"} {university.name}
         </h2>
         {!pathname.includes("calificar") && (
-          <Link href={`/calificar/universidad/${university.id}`}>
-            <Button className="w-1/6 font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
-              Calificar {university.tipo}
-            </Button>
-          </Link>
+          <div className="flex gap-2">
+            <Link href={`/universidad/calificar/${university.id}`}>
+              <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
+                Calificar
+              </Button>
+            </Link>
+            <Link href={`/`}>
+              <Button
+                variant="outline"
+                className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"
+              >
+                Ver Profesores
+              </Button>
+            </Link>
+          </div>
         )}
       </div>
     </section>
