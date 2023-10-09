@@ -51,7 +51,7 @@ export async function POST(req: Request) {
   const internetRating = parseInt(internet, 10);
   const foodRating = parseInt(food, 10);
   const socialRating = parseInt(social, 10);
-  const overallRating =
+  const overallRating = (
     (safetyRating +
       locationRating +
       happinessRating +
@@ -62,7 +62,8 @@ export async function POST(req: Request) {
       internetRating +
       foodRating +
       socialRating) /
-    10;
+    10
+  ).toFixed(1);
 
   try {
     const response = await saveRating(
@@ -80,6 +81,7 @@ export async function POST(req: Request) {
       overallRating,
       content
     );
+    console.log(response);
     return new NextResponse("Success", { status: 200 });
   } catch (error) {
     console.error("Error:", error);

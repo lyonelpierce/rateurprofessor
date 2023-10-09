@@ -1295,7 +1295,7 @@ const RateUniversity = ({ params }: any) => {
                               className="peer sr-only"
                             />
                             <Label
-                              htmlFor="soc3ee"
+                              htmlFor="soc3"
                               className={cn(
                                 "rounded-none h-12 w-16 bg-gray-200 hover:bg-yellow-400/70 cursor-pointer border border-white",
                                 (social >= 3 || hoverSocial >= 3) &&

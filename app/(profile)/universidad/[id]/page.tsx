@@ -28,10 +28,10 @@ const University = ({ params }: any) => {
               {university?.reviews.map((review: any) => (
                 <li
                   key={review.id}
-                  className="flex gap-8 bg-gray-100 p-4 relative"
+                  className="flex gap-8 bg-gray-100 p-4 py-12 relative"
                 >
                   <div className="bg-red-500/70 px-8 py-4">
-                    <p className="text-4xl font-semibold">
+                    <p className="text-3xl font-semibold">
                       {review.overallRating}
                     </p>
                   </div>

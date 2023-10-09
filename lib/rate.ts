@@ -13,7 +13,7 @@ export const saveRating = async (
   internetRating: number,
   foodRating: number,
   socialRating: number,
-  overallRating: number,
+  overallRating: string,
   content: string
 ) => {
   const { userId } = auth();

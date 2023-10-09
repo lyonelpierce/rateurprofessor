@@ -81,8 +81,8 @@ model UniversityReview {
   internetRating     Int
   foodRating         Int
   socialRating       Int
-  overallRating      Float
-  content       String
+  overallRating      String
+  content       String       @db.VarChar(500)
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
   user          User         @relation(fields: [userId], references: [id])
