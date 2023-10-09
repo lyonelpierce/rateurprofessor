@@ -9,7 +9,7 @@ const ProfileInfo = ({ university }: any) => {
   const pathname = usePathname();
 
   return (
-    <section className="fixed mt-20 w-full bg-white shadow-md p-8">
+    <section className="fixed mt-20 w-full bg-white shadow-md p-8 z-20">
       <div className="flex flex-col gap-1 max-w-7xl mx-auto">
         <p className="font-semibold text-muted-foreground">
           {university.location}

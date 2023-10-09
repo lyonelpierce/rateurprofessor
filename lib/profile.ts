@@ -8,6 +8,11 @@ export const getUniversity = async (id: string) => {
       where: {
         id: id,
       },
+      include: {
+        professors: true,
+        courses: true,
+        reviews: true,
+      },
     });
 
     return university;

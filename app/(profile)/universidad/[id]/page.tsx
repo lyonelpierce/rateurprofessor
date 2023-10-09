@@ -23,7 +23,28 @@ const University = ({ params }: any) => {
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="py-8 max-w-7xl mx-auto">{university?.name}</div>
+          <div className="max-w-7xl mx-auto pt-72">
+            <ul className="flex flex-col gap-4">
+              {university?.reviews.map((review: any) => (
+                <li
+                  key={review.id}
+                  className="flex gap-8 bg-gray-100 p-4 relative"
+                >
+                  <div className="bg-red-500/70 px-8 py-4">
+                    <p className="text-4xl font-semibold">
+                      {review.overallRating}
+                    </p>
+                  </div>
+                  <p className="capitalize text-sm font-medium">
+                    {review.content}
+                  </p>
+                  <div className="absolute right-0 top-0 p-4">
+                    <p className="text-sm font-semibold">{review.updatedAt}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </>
       )}
     </>

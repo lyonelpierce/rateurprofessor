@@ -2,11 +2,13 @@
 
 import * as z from "zod";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { notFound } from "next/navigation";
+
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
@@ -34,6 +36,8 @@ const RateUniversity = ({ params }: any) => {
     error,
     isLoading,
   } = useSWR(`/api/profile/university/${params.id}`, fetcher);
+
+  const router = useRouter();
 
   if (error) {
     notFound();
@@ -122,11 +126,26 @@ const RateUniversity = ({ params }: any) => {
   const isFormLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      const response = await fetch(
+        `/api/profile/university/rate/${params.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
+      if (response.ok) {
+        router.push(`/universidad/${params.id}`);
+      }
+    } catch (error) {}
   };
 
   const values = form.getValues();
   const isFormFilled = Object.values(values).includes("");
+  console.log(values);
 
   return (
     <section>
@@ -146,9 +165,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -300,8 +319,8 @@ const RateUniversity = ({ params }: any) => {
                       <>
                         <RadioGroup
                           className="flex items-center justify-center gap-0"
-                          defaultValue="1"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -452,9 +471,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -605,9 +624,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -758,9 +777,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -911,9 +930,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -1070,9 +1089,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -1223,9 +1242,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -1376,9 +1395,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -1522,9 +1541,9 @@ const RateUniversity = ({ params }: any) => {
                     <FormControl>
                       <>
                         <RadioGroup
-                          defaultValue="1"
                           className="flex items-center justify-center gap-0"
                           onValueChange={field.onChange}
+                          disabled={isFormLoading}
                         >
                           <div className="flex flex-col justify-center items-center">
                             <RadioGroupItem
@@ -1551,6 +1570,7 @@ const RateUniversity = ({ params }: any) => {
                               value="2"
                               id="clu2"
                               className="peer sr-only"
+                              disabled={isFormLoading}
                             />
                             <Label
                               htmlFor="clu2"
@@ -1674,6 +1694,7 @@ const RateUniversity = ({ params }: any) => {
                       <Textarea
                         placeholder="Que quieres compartir con otros estudiantes sobre esta universidad?"
                         className="h-40"
+                        disabled={isLoading}
                         {...field}
                       />
                     </FormControl>
@@ -1703,7 +1724,7 @@ const RateUniversity = ({ params }: any) => {
                 <Button
                   type="submit"
                   className="font-semibold px-12"
-                  disabled={isFormFilled}
+                  disabled={isFormFilled || isFormLoading}
                 >
                   Calificar
                 </Button>
