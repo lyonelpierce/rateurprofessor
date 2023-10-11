@@ -1794,6 +1794,11 @@ const RateUniversity = ({ params }: any) => {
                   <span>
                     Podras volver a calificar esta univesidad dentro de 6 meses.
                   </span>
+                  <Link href={`/universidad/${params.id}`}>
+                    <Button className="border-0 font-bold bg-blue-600 hover:bg-blue-600/90 hover:text-white">
+                      Regresar
+                    </Button>
+                  </Link>
                 </p>
               </div>
             )}
