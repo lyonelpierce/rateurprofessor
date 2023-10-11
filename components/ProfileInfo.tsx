@@ -21,15 +21,16 @@ const ProfileInfo = ({ university }: any) => {
             {university.universities.name}
           </h2>
           <div className="flex gap-2">
-            {!pathname.includes("calificar") && (
-              <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
-                <Link
-                  href={`/universidad/${university.universities.id}/calificar`}
-                >
-                  Calificar
-                </Link>
-              </Button>
-            )}
+            {!pathname.includes("profesores") &&
+              !pathname.includes("calificar") && (
+                <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
+                  <Link
+                    href={`/universidad/${university.universities.id}/calificar`}
+                  >
+                    Calificar
+                  </Link>
+                </Button>
+              )}
             <Button
               variant="outline"
               className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"

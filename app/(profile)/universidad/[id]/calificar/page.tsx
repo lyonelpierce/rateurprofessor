@@ -152,7 +152,7 @@ const RateUniversity = ({ params }: any) => {
           <div className="max-w-7xl mx-auto py-10 h-full">
             {university.isReviewed ? (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="pt-52">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="pt-64">
                   <div className="grid grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
