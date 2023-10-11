@@ -13,6 +13,6 @@ export const formSchema = z.object({
   social: z.enum(["", "1", "2", "3", "4", "5"]),
   content: z
     .string()
-    .min(1, { message: "La reseña debe contener al menos 1 caracter." })
-    .max(500),
+    .min(50, { message: "La reseña debe contener al menos 50 caracteres." })
+    .max(500, { message: "La reseña debe contener menos de 500 caracteres." }),
 });

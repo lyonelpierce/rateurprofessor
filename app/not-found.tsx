@@ -6,10 +6,10 @@ export default function NotFound() {
     <div className="flex flex-col items-center justify-center h-full">
       <Image src="/images/404.svg" alt="Not found" width={500} height={500} />
       <p className="mt-5 font-semibold">
-        Page Not Found |
+        Pagina no encontrada |
         <Link href="/" className="text-blue-600 hover:text-blue-600/90">
           {" "}
-          Return Home
+          Regresar al Inicio
         </Link>
       </p>
     </div>

@@ -81,7 +81,6 @@ export async function POST(req: Request) {
       overallRating,
       content
     );
-    console.log(response);
     return new NextResponse("Success", { status: 200 });
   } catch (error) {
     console.error("Error:", error);

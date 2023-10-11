@@ -28,7 +28,6 @@ model University {
   courses     Course[] 
   reviews     UniversityReview[]
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
 }
 
 model Professor {
@@ -40,7 +39,6 @@ model Professor {
   courses       Course[]   
   reviews       ProfessorReview[]
   createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
 
   @@index([universityId])
 }
@@ -51,19 +49,17 @@ model Course {
   professors    Professor[]  
   universities  University[]
   createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
 }
 
 model ProfessorReview {
   id            String       @id @default(cuid())
   content       String
   rating        Int          @default(0)
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
   user          User         @relation(fields: [userId], references: [id])
   userId        String
   professor     Professor    @relation(fields: [professorId], references: [id])
   professorId   String
+  createdAt     DateTime     @default(now())
 
   @@index([userId])
   @@index([professorId])
@@ -83,13 +79,13 @@ model UniversityReview {
   socialRating       Int
   overallRating      String
   content       String       @db.VarChar(500)
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
   user          User         @relation(fields: [userId], references: [id])
   userId        String
   university    University   @relation(fields: [universityId], references: [id])
   universityId  String
+  createdAt     DateTime     @default(now())
 
   @@index([userId])
   @@index([universityId])
 }
+
