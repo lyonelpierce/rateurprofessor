@@ -16,31 +16,39 @@ const ProfileInfo = ({ university }: any) => {
             {university.universities.location}
           </p>
           <h2 className="text-3xl font-bold">
-            {pathname.includes("calificar") && "Calificar"}{" "}
+            {pathname.includes("profesores") ? "Profesores - " : ""}
+            {pathname.includes("calificar") ? "Calificar - " : ""}
             {university.universities.name}
           </h2>
-          {!pathname.includes("calificar") && (
-            <div className="flex gap-2">
-              <Button
-                className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90"
-                // disabled={!university.isReviewed}
-              >
+          <div className="flex gap-2">
+            {!pathname.includes("calificar") && (
+              <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
                 <Link
-                  href={`/universidad/calificar/${university.universities.id}`}
+                  href={`/universidad/${university.universities.id}/calificar`}
                 >
                   Calificar
                 </Link>
               </Button>
-              <Link href={`/`}>
-                <Button
-                  variant="outline"
-                  className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"
-                >
-                  Ver Profesores
-                </Button>
+            )}
+            <Button
+              variant="outline"
+              className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"
+            >
+              <Link
+                href={
+                  pathname.includes("profesores") ||
+                  pathname.includes("calificar")
+                    ? `/universidad/${university.universities.id}`
+                    : `/universidad/${university.universities.id}/profesores`
+                }
+              >
+                {pathname.includes("profesores") ||
+                pathname.includes("calificar")
+                  ? "Ver Universidad"
+                  : "Ver Profesores"}
               </Link>
-            </div>
-          )}
+            </Button>
+          </div>
         </div>
       </div>
     </section>

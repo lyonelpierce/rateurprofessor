@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { zodResolver } from "@hookform/resolvers/zod";

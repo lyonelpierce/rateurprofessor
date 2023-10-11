@@ -66,7 +66,7 @@ const Hero = () => {
                 </div>
               </PopoverTrigger>
               <PopoverContent
-                className="p-0"
+                className="border-0 p-0"
                 onOpenAutoFocus={(e) => e.preventDefault()}
               >
                 <ul className="rounded-3xl overflow-hidden">
