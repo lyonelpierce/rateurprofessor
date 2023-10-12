@@ -1757,7 +1757,7 @@ const RateUniversity = ({ params }: any) => {
                     />
                     <FormDescription className="flex flex-col gap-4 items-center justify-center border shadow-md rounded-md p-4">
                       <span className="w-2/3 text-center font-medium">
-                        Al hacer click en el boton "Calificar", reconozco que he
+                        Al hacer click en el boton Calificar, reconozco que he
                         leido y estoy de acuerdo con los{" "}
                         <Link
                           href="/"

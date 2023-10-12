@@ -10,10 +10,9 @@ const Info = () => {
   const { isSignedIn } = useAuth();
   return (
     <section className="flex flex-col items-center justify-center py-8 gap-8 max-w-7xl w-full h-full">
-      <p className="text-3xl text-center font-bold">
-        Unete Gratis
-        <br />
-        <span className="text-2xl font-medium">y comparte tu experiencia!</span>
+      <p className="flex flex-col text-3xl text-center font-bold">
+        Unete
+        <span className="text-xl font-medium">y comparte tu experiencia!</span>
       </p>
       <ul className="flex justify-between gap-8 w-full h-full mt-4">
         <li className="flex flex-col items-center justify-center">
