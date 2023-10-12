@@ -2,8 +2,9 @@
 
 import useSWR from "swr";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
-import ProfileInfo from "@/components/ProfileInfo";
+import ProfileInfo from "@/components/UniversityInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -37,9 +38,11 @@ const ProfessorsList = ({ params }: any) => {
                 {university.universities.professors.map((professor: any) => (
                   <li
                     key={professor.id}
-                    className="bg-gray-100 p-5 text-xl font-bold"
+                    className="bg-gray-100 p-5 text-base font-bold"
                   >
-                    {professor.name}
+                    <Link href={`/profesor/${professor.id}`}>
+                      {professor.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

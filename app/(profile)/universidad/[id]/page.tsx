@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import ProfileInfo from "@/components/ProfileInfo";
+import ProfileInfo from "@/components/UniversityInfo";
 import {
   ShieldCheck,
   MapPin,
@@ -261,15 +261,15 @@ const University = ({ params }: any) => {
                 ))}
               </ul>
             ) : (
-              <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold h-full">
+              <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold h-full w-full">
                 Aun no existen reviews para esta universidad.
-                <Link
-                  href={`/universidad/${university.universities.id}/calificar`}
-                >
-                  <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
+                <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90 w-1/6">
+                  <Link
+                    href={`/universidad/${university.universities.id}/calificar`}
+                  >
                     Calificar
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </ul>
             )}
           </div>

@@ -24,7 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import ProfileInfo from "@/components/ProfileInfo";
+import ProfileInfo from "@/components/UniversityInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 

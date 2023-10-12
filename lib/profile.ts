@@ -28,6 +28,9 @@ export const getProfessor = async (id: string) => {
       where: {
         id: id,
       },
+      include: {
+        university: true,
+      },
     });
 
     return professor;

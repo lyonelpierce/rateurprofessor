@@ -5,48 +5,45 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
-const ProfileInfo = ({ university }: any) => {
+const ProfileInfo = ({ professor }: any) => {
   const pathname = usePathname();
+  console.log(professor);
 
   return (
     <section className="fixed mt-20 w-full bg-white shadow-md p-8 z-20">
       <div className="flex max-w-7xl justify-between items-center mx-auto">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 w-full">
           <p className="font-semibold text-muted-foreground">
-            {university.universities.location}
+            {professor.university.name}
           </p>
           <h2 className="text-3xl font-bold">
             {pathname.includes("profesores") ? "Profesores - " : ""}
             {pathname.includes("calificar") ? "Calificar - " : ""}
-            {university.universities.name}
+            {professor.name}
           </h2>
           <div className="flex gap-2">
             {!pathname.includes("profesores") &&
               !pathname.includes("calificar") && (
-                <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
-                  <Link
-                    href={`/universidad/${university.universities.id}/calificar`}
-                  >
+                <Button className="font-semibold mt-2 w-1/6 bg-blue-600 hover:bg-blue-600/90">
+                  <Link href={`/profesor/${professor.id}/calificar`}>
                     Calificar
                   </Link>
                 </Button>
               )}
             <Button
               variant="outline"
-              className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"
+              className="font-semibold mt-2 w-1/6 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"
             >
               <Link
                 href={
-                  pathname.includes("profesores") ||
                   pathname.includes("calificar")
-                    ? `/universidad/${university.universities.id}`
-                    : `/universidad/${university.universities.id}/profesores`
+                    ? `/profesor/${professor.id}/calificar`
+                    : `/universidad/${professor.university.id}`
                 }
               >
-                {pathname.includes("profesores") ||
-                pathname.includes("calificar")
-                  ? "Ver Universidad"
-                  : "Ver Profesores"}
+                {pathname.includes("calificar")
+                  ? "Ver Profesor"
+                  : "Ver Universidad"}
               </Link>
             </Button>
           </div>
