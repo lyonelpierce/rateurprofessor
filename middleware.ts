@@ -7,6 +7,7 @@ export default authMiddleware({
     "/api/profile/:path*",
     "/universidad/:path",
     "/universidad/:path/profesores",
+    "/profesor/:path",
   ],
 });
 
