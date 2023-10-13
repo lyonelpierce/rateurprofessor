@@ -249,13 +249,13 @@ const University = ({ params }: any) => {
             ) : (
               <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold h-full w-full">
                 Aun no existen reviews para esta universidad.
-                <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90 w-1/6">
-                  <Link
-                    href={`/universidad/${university.universities.id}/calificar`}
-                  >
+                <Link
+                  href={`/universidad/${university.universities.id}/calificar`}
+                >
+                  <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
                     Calificar
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </ul>
             )}
           </div>

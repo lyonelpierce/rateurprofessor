@@ -554,9 +554,11 @@ const RateProfessor = ({ params }: any) => {
                   <span>
                     Podras volver a calificar a este profesor dentro de 6 meses.
                   </span>
-                  <Button className="border-0 font-bold bg-blue-600 w-1/6 hover:bg-blue-600/90 hover:text-white">
-                    <Link href={`/profesor/${params.id}`}>Regresar</Link>
-                  </Button>
+                  <Link href={`/profesor/${params.id}`}>
+                    <Button className="border-0 font-bold bg-blue-600 hover:bg-blue-600/90 hover:text-white">
+                      Regresar
+                    </Button>
+                  </Link>
                 </p>
               </div>
             )}
