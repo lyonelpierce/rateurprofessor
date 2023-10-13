@@ -20,13 +20,66 @@ const Professor = ({ params }: any) => {
     notFound();
   }
 
-  console.log(professor);
+  // CALCULATE  RATING
+  const calculateRating = (aspectKey: string) => {
+    if (
+      !professor.professors.reviews ||
+      professor.professors.reviews.length === 0
+    ) {
+      return 0;
+    }
+
+    const totalRatings = professor.professors.reviews.reduce(
+      (accumulator: number, review: any) =>
+        accumulator + parseFloat(review[aspectKey] || 0),
+      0
+    );
+
+    return totalRatings / professor.professors.reviews.length;
+  };
+
+  const calculateAgainPercentage = () => {
+    if (
+      !professor.professors.reviews ||
+      professor.professors.reviews.length === 0
+    ) {
+      return 0;
+    }
+
+    const totalReviews = professor.professors.reviews.length;
+    const positiveAgainReviews = professor.professors.reviews.filter(
+      (review: any) => review.again === 1
+    ).length;
+
+    return (positiveAgainReviews / totalReviews) * 100;
+  };
+
   return (
     <section>
       {!isLoading && (
         <>
           <ProfileInfo professor={professor} />
           <div className="max-w-7xl mx-auto pt-72 pb-8">
+            <div className="flex justify-between w-full py-12">
+              <p className="flex flex-col items-center text-8xl font-bold text-center">
+                {calculateRating("rate")}/5
+                <span className="text-xl">General</span>
+              </p>
+              <p className="flex flex-col items-center text-8xl font-bold text-center">
+                {calculateRating("difficulty")}/5
+                <span className="text-xl">Dificultad</span>
+              </p>
+              <p className="flex flex-col items-center text-8xl font-bold text-center">
+                {calculateAgainPercentage()}%
+                <span className="text-xl">Lo volveria a elegir</span>
+              </p>
+            </div>
+            <p className="font-bold text-xl mb-2">
+              {professor.professors.reviews.length}{" "}
+              {professor.professors.reviews.length === 1
+                ? "Calificación"
+                : "Calificaciones"}
+            </p>
             <ul>
               {professor.professors.reviews.map((review: any) => (
                 <li
@@ -54,9 +107,21 @@ const Professor = ({ params }: any) => {
                   >
                     <p className="text-3xl font-black">{review.rate}.0</p>
                   </div>
-                  <p className="font-medium capitalize w-11/12">
-                    {review.content}
-                  </p>
+                  <div className="flex flex-col gap-2 w-full">
+                    <div className="flex gap-10 font-medium">
+                      <p className="flex gap-5">
+                        Dificultad:{" "}
+                        <span className="font-bold">{review.difficulty}/5</span>
+                      </p>
+                      <p className="flex gap-5">
+                        Lo volveria a elegir:{" "}
+                        <span className="font-bold">
+                          {review.again ? "Si" : "No"}
+                        </span>
+                      </p>
+                    </div>
+                    <p className="font-medium capitalize">{review.content}</p>
+                  </div>
                 </li>
               ))}
             </ul>

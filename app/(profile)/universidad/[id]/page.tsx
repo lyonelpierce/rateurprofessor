@@ -146,8 +146,8 @@ const University = ({ params }: any) => {
             <p className="font-bold text-xl mb-2">
               {university.universities.reviews.length}{" "}
               {university.universities.reviews.length === 1
-                ? "Review"
-                : "Reviews"}
+                ? "Calificación"
+                : "Calificaciones"}
             </p>
             {university.universities.reviews.length > 0 ? (
               <ul className="flex flex-col gap-4">
