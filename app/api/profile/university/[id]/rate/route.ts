@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 
-import { saveRating } from "@/lib/rate";
+import { saveUniversityRating } from "@/lib/rate";
 
 export async function POST(req: Request) {
   const { userId } = auth();
   const pathname = new URL(req.url).pathname;
-  const id = pathname.split("/rate/")[1];
+  const segments = pathname.split("/");
+  const id = segments[segments.length - 2];
 
   const body = await req.json();
 
@@ -66,7 +67,7 @@ export async function POST(req: Request) {
   ).toFixed(1);
 
   try {
-    const response = await saveRating(
+    const response = await saveUniversityRating(
       id,
       safetyRating,
       locationRating,

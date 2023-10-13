@@ -126,7 +126,7 @@ const RateUniversity = ({ params }: any) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await fetch(
-        `/api/profile/university/rate/${params.id}`,
+        `/api/profile/university/${params.id}/rate/`,
         {
           method: "POST",
           headers: {

@@ -53,8 +53,10 @@ model Course {
 
 model ProfessorReview {
   id            String       @id @default(cuid())
-  content       String
-  rating        Int          @default(0)
+  rate          Int          
+  again         Int
+  difficulty    Int
+  content       String       @db.VarChar(500)
   user          User         @relation(fields: [userId], references: [id])
   userId        String
   professor     Professor    @relation(fields: [professorId], references: [id])

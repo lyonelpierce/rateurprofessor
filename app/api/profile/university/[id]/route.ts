@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getUniversity } from "@/lib/profile";
-import { checkRating } from "@/lib/rate";
+import { checkUniversityRating } from "@/lib/rate";
 
 export const revalidate = 0;
 
@@ -16,7 +16,7 @@ export async function GET(req: Request) {
       return new NextResponse("Not found", { status: 404 });
     }
 
-    const isReviewed = await checkRating();
+    const isReviewed = await checkUniversityRating();
 
     const responseData = {
       universities,

@@ -18,29 +18,29 @@ const Info = () => {
         <li className="flex flex-col items-center justify-center">
           <Image
             src="/images/Professor.svg"
-            height="350"
-            width="350"
+            height="300"
+            width="300"
             alt="Education"
           />
-          <p className="font-semibold text-2xl">Califica a tus Profesores</p>
+          <p className="font-semibold text-xl">Califica a tus Profesores</p>
         </li>
         <li className="flex flex-col items-center justify-center">
           <Image
             src="/images/Secret.svg"
-            height="350"
-            width="350"
+            height="300"
+            width="300"
             alt="Education"
           />
-          <p className="font-semibold text-2xl">Reseñas 100% anonimas</p>
+          <p className="font-semibold text-xl">Reseñas 100% anonimas</p>
         </li>
         <li className="flex flex-col items-center justify-center">
           <Image
             src="/images/University.svg"
-            height="350"
-            width="350"
+            height="300"
+            width="300"
             alt="Education"
           />
-          <p className="font-semibold text-2xl">Califica tu Universidad</p>
+          <p className="font-semibold text-xl">Califica tu Universidad</p>
         </li>
       </ul>
       {!isSignedIn && (

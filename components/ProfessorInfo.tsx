@@ -14,15 +14,15 @@ const ProfileInfo = ({ professor }: any) => {
         <div className="flex flex-col gap-1 w-full">
           <h2 className="text-3xl font-bold">
             {pathname.includes("calificar") ? "Calificar - " : ""}
-            {professor.name}
+            {professor.professors.name}
           </h2>
           <p className="font-semibold text-muted-foreground">
-            {professor.university.name}
+            {professor.professors.university.name}
           </p>
           <div className="flex gap-2">
             {!pathname.includes("calificar") && (
               <Button className="font-semibold mt-2 w-1/6 bg-blue-600 hover:bg-blue-600/90">
-                <Link href={`/profesor/${professor.id}/calificar`}>
+                <Link href={`/profesor/${professor.professors.id}/calificar`}>
                   Calificar
                 </Link>
               </Button>
@@ -34,8 +34,8 @@ const ProfileInfo = ({ professor }: any) => {
               <Link
                 href={
                   pathname.includes("calificar")
-                    ? `/profesor/${professor.id}`
-                    : `/universidad/${professor.university.id}`
+                    ? `/profesor/${professor.professors.id}`
+                    : `/universidad/${professor.professors.university.id}`
                 }
               >
                 {pathname.includes("calificar")

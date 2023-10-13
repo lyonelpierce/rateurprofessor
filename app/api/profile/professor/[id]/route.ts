@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+
 import { getProfessor } from "@/lib/profile";
+import { checkProfessorRating } from "@/lib/rate";
 
 export const revalidate = 0;
 
@@ -14,7 +16,14 @@ export async function GET(req: Request) {
       return new NextResponse("Not found", { status: 404 });
     }
 
-    return new Response(JSON.stringify(professors), {
+    const isReviewed = await checkProfessorRating();
+
+    const responseData = {
+      professors,
+      isReviewed,
+    };
+
+    return new Response(JSON.stringify(responseData), {
       headers: {
         "content-type": "application/json",
       },
