@@ -2,8 +2,10 @@
 
 import useSWR from "swr";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import monthNames from "@/constants/months";
 import ProfileInfo from "@/components/ProfessorInfo";
 
@@ -80,51 +82,66 @@ const Professor = ({ params }: any) => {
                 ? "Calificación"
                 : "Calificaciones"}
             </p>
-            <ul>
-              {professor.professors.reviews.map((review: any) => (
-                <li
-                  key={review.id}
-                  className="flex bg-gray-100 gap-5 w-full relative pt-12 px-5 pb-8"
-                >
-                  <div className="absolute right-0 top-0 p-5">
-                    <p className="text-sm font-semibold">
-                      {`${
-                        monthNames[new Date(review.createdAt).getMonth()]
-                      } ${new Date(review.createdAt).getDate()}, ${new Date(
-                        review.createdAt
-                      ).getFullYear()}`}
-                    </p>
-                  </div>
-                  <div
-                    className={cn(
-                      "flex items-center justify-center p-4 w-20",
-                      (review.rate < 3 && "bg-red-400") ||
-                        (review.rate >= 3 &&
-                          review.rate < 4 &&
-                          "bg-yellow-400") ||
-                        (review.rate >= 4 && "bg-green-400")
-                    )}
+            {professor.professors.reviews.length > 0 ? (
+              <ul>
+                {professor.professors.reviews.map((review: any) => (
+                  <li
+                    key={review.id}
+                    className="flex bg-gray-100 gap-5 w-full relative pt-12 px-5 pb-8"
                   >
-                    <p className="text-3xl font-black">{review.rate}.0</p>
-                  </div>
-                  <div className="flex flex-col gap-2 w-full">
-                    <div className="flex gap-10 font-medium">
-                      <p className="flex gap-5">
-                        Dificultad:{" "}
-                        <span className="font-bold">{review.difficulty}/5</span>
-                      </p>
-                      <p className="flex gap-5">
-                        Lo volveria a elegir:{" "}
-                        <span className="font-bold">
-                          {review.again ? "Si" : "No"}
-                        </span>
+                    <div className="absolute right-0 top-0 p-5">
+                      <p className="text-sm font-semibold">
+                        {`${
+                          monthNames[new Date(review.createdAt).getMonth()]
+                        } ${new Date(review.createdAt).getDate()}, ${new Date(
+                          review.createdAt
+                        ).getFullYear()}`}
                       </p>
                     </div>
-                    <p className="font-medium capitalize">{review.content}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                    <div
+                      className={cn(
+                        "flex items-center justify-center p-4 w-20",
+                        (review.rate < 3 && "bg-red-400") ||
+                          (review.rate >= 3 &&
+                            review.rate < 4 &&
+                            "bg-yellow-400") ||
+                          (review.rate >= 4 && "bg-green-400")
+                      )}
+                    >
+                      <p className="text-3xl font-black">{review.rate}.0</p>
+                    </div>
+                    <div className="flex flex-col gap-2 w-full">
+                      <div className="flex gap-10 font-medium">
+                        <p className="flex gap-5">
+                          Dificultad:{" "}
+                          <span className="font-bold">
+                            {review.difficulty}/5
+                          </span>
+                        </p>
+                        <p className="flex gap-5">
+                          Lo volveria a elegir:{" "}
+                          <span className="font-bold">
+                            {review.again ? "Si" : "No"}
+                          </span>
+                        </p>
+                      </div>
+                      <p className="font-medium capitalize">{review.content}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold h-full w-full">
+                Aun no existen reviews para este profesor.
+                <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90 w-1/6">
+                  <Link
+                    href={`/universidad/${professor.professors.id}/calificar`}
+                  >
+                    Calificar
+                  </Link>
+                </Button>
+              </ul>
+            )}
           </div>
         </>
       )}
