@@ -23,32 +23,32 @@ const ProfileInfo = ({ university }: any) => {
           <div className="flex gap-2">
             {!pathname.includes("profesores") &&
               !pathname.includes("calificar") && (
-                <Button className="font-semibold mt-2 w-1/6 bg-blue-600 hover:bg-blue-600/90">
-                  <Link
-                    href={`/universidad/${university.universities.id}/calificar`}
-                  >
+                <Link
+                  href={`/universidad/${university.universities.id}/calificar`}
+                >
+                  <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
                     Calificar
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               )}
-            <Button
-              variant="outline"
-              className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white w-1/6"
+            <Link
+              href={
+                pathname.includes("profesores") ||
+                pathname.includes("calificar")
+                  ? `/universidad/${university.universities.id}`
+                  : `/universidad/${university.universities.id}/profesores`
+              }
             >
-              <Link
-                href={
-                  pathname.includes("profesores") ||
-                  pathname.includes("calificar")
-                    ? `/universidad/${university.universities.id}`
-                    : `/universidad/${university.universities.id}/profesores`
-                }
+              <Button
+                variant="outline"
+                className="font-semibold mt-2 text-blue-600 border-blue-600 hover:bg-blue-600/90 hover:text-white"
               >
                 {pathname.includes("profesores") ||
                 pathname.includes("calificar")
                   ? "Ver Universidad"
                   : "Ver Profesores"}
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

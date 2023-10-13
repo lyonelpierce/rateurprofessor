@@ -65,15 +65,17 @@ const Professor = ({ params }: any) => {
             <div className="flex justify-between w-full py-12">
               <p className="flex flex-col items-center text-8xl font-bold text-center">
                 {calculateRating("rate")}/5
-                <span className="text-xl">General</span>
+                <span className="text-xl font-semibold">General</span>
               </p>
               <p className="flex flex-col items-center text-8xl font-bold text-center">
                 {calculateRating("difficulty")}/5
-                <span className="text-xl">Dificultad</span>
+                <span className="text-xl font-semibold">Dificultad</span>
               </p>
               <p className="flex flex-col items-center text-8xl font-bold text-center">
                 {calculateAgainPercentage()}%
-                <span className="text-xl">Lo volveria a elegir</span>
+                <span className="text-xl font-semibold">
+                  Lo volveria a elegir
+                </span>
               </p>
             </div>
             <p className="font-bold text-xl mb-2">
