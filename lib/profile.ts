@@ -9,7 +9,11 @@ export const getUniversity = async (id: string) => {
         id: id,
       },
       include: {
-        professors: true,
+        professors: {
+          include: {
+            reviews: true,
+          },
+        },
         courses: true,
         reviews: true,
       },

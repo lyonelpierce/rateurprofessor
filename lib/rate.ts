@@ -50,9 +50,11 @@ export const checkProfessorRating = async () => {
       },
     });
 
-    if (!lastReview) return true;
+    console.log(lastReview);
 
-    if (lastReview) {
+    if (!lastReview) {
+      return true;
+    } else {
       const sixMonthsAgo = subMonths(new Date(), 6);
       const reviewDate = new Date(lastReview.createdAt);
       if (isBefore(reviewDate, sixMonthsAgo)) {
@@ -149,7 +151,9 @@ export const saveProfessorRating = async (
   const { userId } = auth();
   if (!userId) return;
 
-  const isRatingAllowed = await checkUniversityRating();
+  const isRatingAllowed = await checkProfessorRating();
+
+  console.log(isRatingAllowed);
 
   if (!isRatingAllowed) {
     console.error(
