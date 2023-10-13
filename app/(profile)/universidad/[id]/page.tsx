@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import monthNames from "@/constants/months";
 import ProfileInfo from "@/components/UniversityInfo";
 import {
   ShieldCheck,
@@ -32,21 +33,6 @@ const University = ({ params }: any) => {
   if (error) {
     notFound();
   }
-
-  const monthNames = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Augosto",
-    "September",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
 
   const aspectData = [
     {
