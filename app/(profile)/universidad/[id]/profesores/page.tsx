@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+import { cn } from "@/lib/utils";
 import ProfileInfo from "@/components/UniversityInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -19,7 +20,20 @@ const ProfessorsList = ({ params }: any) => {
     notFound();
   }
 
-  console.log(university);
+  // CALCULATE  RATING
+  const calculateRating = (professor: any, aspectKey: string) => {
+    if (!professor.reviews || professor.reviews.length === 0) {
+      return 0;
+    }
+
+    const totalRatings = professor.reviews.reduce(
+      (accumulator: number, review: any) =>
+        accumulator + parseFloat(review[aspectKey] || 0),
+      0
+    );
+
+    return totalRatings / professor.reviews.length;
+  };
 
   return (
     <section className="h-full">
@@ -36,14 +50,36 @@ const ProfessorsList = ({ params }: any) => {
               </p>{" "}
               <ul className="flex flex-col gap-4 w-full">
                 {university.universities.professors.map((professor: any) => (
-                  <li
-                    key={professor.id}
-                    className="bg-gray-100 p-5 text-base font-bold"
-                  >
-                    <Link href={`/profesor/${professor.id}`}>
-                      {professor.name}
-                    </Link>
-                  </li>
+                  <Link href={`/profesor/${professor.id}`} key={professor.id}>
+                    <li className="flex gap-5 bg-gray-100 hover:bg-gray-200 p-5 text-base font-bold">
+                      <div
+                        className={cn(
+                          "flex items-center justify-center p-4 w-20",
+                          {
+                            "bg-gray-300":
+                              calculateRating(professor, "rate") === 0,
+                            "bg-red-400":
+                              calculateRating(professor, "rate") < 3 &&
+                              calculateRating(professor, "rate") > 0,
+                            "bg-yellow-400":
+                              calculateRating(professor, "rate") >= 3 &&
+                              calculateRating(professor, "rate") < 4,
+                            "bg-green-400":
+                              calculateRating(professor, "rate") >= 4,
+                          }
+                        )}
+                      >
+                        {" "}
+                        {calculateRating(professor, "rate")}/5
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        {professor.name}
+                        <span className="text-sm text-muted-foreground font-medium">
+                          {university.universities.name}
+                        </span>
+                      </div>
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>
