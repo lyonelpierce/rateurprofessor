@@ -42,7 +42,7 @@ const Hero = () => {
   }, [data, searchText]);
 
   return (
-    <section className="flex items-center w-full bg-zinc-400 h-1/2 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
+    <section className="pt-20 flex items-center w-full bg-zinc-400 h-1/2 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
       <div className="flex flex-col items-center justify-center backdrop-blur w-full h-full">
         <div>
           <p className="text-3xl font-semibold mb-5 text-center text-white">
