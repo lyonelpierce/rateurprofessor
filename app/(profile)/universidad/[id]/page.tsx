@@ -106,12 +106,12 @@ const University = ({ params }: any) => {
   };
 
   return (
-    <>
+    <section className="h-full">
       {!isLoading && (
-        <>
+        <div className="h-full">
           <ProfileInfo university={university} />
-          <div className="max-w-7xl mx-auto pt-72 pb-8">
-            <div className="flex gap-8 py-8 items-center">
+          <div className="flex flex-col max-w-7xl mx-auto h-full">
+            <div className="flex gap-8 items-center h-1/2 pt-72">
               <p className="text-9xl font-bold w-1/3 text-center">
                 {calculateRating("overallRating").toFixed(1)}
               </p>
@@ -143,125 +143,129 @@ const University = ({ params }: any) => {
                 ))}
               </ul>
             </div>
-            <p className="font-bold text-xl mb-2">
-              {university.universities.reviews.length}{" "}
-              {university.universities.reviews.length === 1
-                ? "Calificación"
-                : "Calificaciones"}
-            </p>
-            {university.universities.reviews.length > 0 ? (
-              <ul className="flex flex-col gap-4">
-                {university.universities.reviews.map((review: any) => (
-                  <li
-                    key={review.id}
-                    className="flex gap-4 bg-gray-100 px-5 py-8 relative"
-                  >
-                    <div className="absolute right-0 top-0 p-5">
-                      <p className="text-sm font-semibold">
-                        {`${
-                          monthNames[new Date(review.createdAt).getMonth()]
-                        } ${new Date(review.createdAt).getDate()}, ${new Date(
-                          review.createdAt
-                        ).getFullYear()}`}
-                      </p>
-                    </div>
-                    <div
-                      className={cn(
-                        "p-4 w-20 h-fit flex justify-center items-center",
-                        (review.overallRating >= 3 &&
-                          review.overallRating < 4 &&
-                          "bg-yellow-400/80") ||
-                          (review.overallRating < 3 && "bg-red-400/80") ||
-                          (review.overallRating >= 4 && "bg-green-400/80")
-                      )}
+            <div className="h-1/2 pb-16">
+              <p className="font-bold text-xl mb-2">
+                {university.universities.reviews.length}{" "}
+                {university.universities.reviews.length === 1
+                  ? "Calificación"
+                  : "Calificaciones"}
+              </p>
+              {university.universities.reviews.length > 0 ? (
+                <ul className="flex flex-col gap-4">
+                  {university.universities.reviews.map((review: any) => (
+                    <li
+                      key={review.id}
+                      className="flex gap-4 bg-gray-100 px-5 py-8 relative"
                     >
-                      <p className="text-3xl font-black">
-                        {review.overallRating}
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-4 w-full">
-                      <p className="capitalize font-medium">{review.content}</p>
-                      <ul className="grid grid-cols-2 gap-4">
-                        {aspectData.map((aspect, i) => (
-                          <li
-                            className="flex justify-between items-center font-semibold text-sm"
-                            key={aspect.label}
-                          >
-                            {aspect.label}
-                            <ul className="flex gap-1">
-                              {[1, 2, 3, 4, 5].map((rating) => (
-                                <li
-                                  key={rating}
-                                  className={cn("bg-gray-200 h-5 w-10", {
-                                    "rounded-l-full": rating === 1,
-                                    "rounded-r-full": rating === 5,
-                                    "bg-red-400":
-                                      rating >= 1 &&
-                                      rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
-                                    "bg-orange-400":
-                                      rating >= 2 &&
-                                      rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
-                                    "bg-yellow-400":
-                                      rating >= 3 &&
-                                      rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
-                                    "bg-green-400":
-                                      rating >= 4 &&
-                                      rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
-                                    "bg-green-600":
-                                      rating >= 5 &&
-                                      rating ===
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
-                                  })}
-                                ></li>
-                              ))}
-                            </ul>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold h-full w-full">
-                Aun no existen reviews para esta universidad.
-                <Link
-                  href={`/universidad/${university.universities.id}/calificar`}
-                >
-                  <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
-                    Calificar
-                  </Button>
-                </Link>
-              </ul>
-            )}
+                      <div className="absolute right-0 top-0 p-5">
+                        <p className="text-sm font-semibold">
+                          {`${
+                            monthNames[new Date(review.createdAt).getMonth()]
+                          } ${new Date(review.createdAt).getDate()}, ${new Date(
+                            review.createdAt
+                          ).getFullYear()}`}
+                        </p>
+                      </div>
+                      <div
+                        className={cn(
+                          "p-4 w-20 h-fit flex justify-center items-center",
+                          (review.overallRating >= 3 &&
+                            review.overallRating < 4 &&
+                            "bg-yellow-400/80") ||
+                            (review.overallRating < 3 && "bg-red-400/80") ||
+                            (review.overallRating >= 4 && "bg-green-400/80")
+                        )}
+                      >
+                        <p className="text-3xl font-black">
+                          {review.overallRating}
+                        </p>
+                      </div>
+                      <div className="flex flex-col gap-4 w-full">
+                        <p className="capitalize font-medium">
+                          {review.content}
+                        </p>
+                        <ul className="grid grid-cols-2 gap-4">
+                          {aspectData.map((aspect, i) => (
+                            <li
+                              className="flex justify-between items-center font-semibold text-sm"
+                              key={aspect.label}
+                            >
+                              {aspect.label}
+                              <ul className="flex gap-1">
+                                {[1, 2, 3, 4, 5].map((rating) => (
+                                  <li
+                                    key={rating}
+                                    className={cn("bg-gray-200 h-5 w-10", {
+                                      "rounded-l-full": rating === 1,
+                                      "rounded-r-full": rating === 5,
+                                      "bg-red-400":
+                                        rating >= 1 &&
+                                        rating <=
+                                          parseFloat(
+                                            university.universities.reviews[0][
+                                              aspect.aspectKey
+                                            ]
+                                          ),
+                                      "bg-orange-400":
+                                        rating >= 2 &&
+                                        rating <=
+                                          parseFloat(
+                                            university.universities.reviews[0][
+                                              aspect.aspectKey
+                                            ]
+                                          ),
+                                      "bg-yellow-400":
+                                        rating >= 3 &&
+                                        rating <=
+                                          parseFloat(
+                                            university.universities.reviews[0][
+                                              aspect.aspectKey
+                                            ]
+                                          ),
+                                      "bg-green-400":
+                                        rating >= 4 &&
+                                        rating <=
+                                          parseFloat(
+                                            university.universities.reviews[0][
+                                              aspect.aspectKey
+                                            ]
+                                          ),
+                                      "bg-green-600":
+                                        rating >= 5 &&
+                                        rating ===
+                                          parseFloat(
+                                            university.universities.reviews[0][
+                                              aspect.aspectKey
+                                            ]
+                                          ),
+                                    })}
+                                  ></li>
+                                ))}
+                              </ul>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold w-full h-full">
+                  Aun no existen reviews para esta universidad.
+                  <Link
+                    href={`/universidad/${university.universities.id}/calificar`}
+                  >
+                    <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
+                      Calificar
+                    </Button>
+                  </Link>
+                </ul>
+              )}
+            </div>
           </div>
-        </>
+        </div>
       )}
-    </>
+    </section>
   );
 };
 
