@@ -9,50 +9,54 @@ import { Button } from "./ui/button";
 const Info = () => {
   const { isSignedIn } = useAuth();
   return (
-    <section className="flex flex-col h-1/2 items-center justify-center py-12 max-w-7xl mx-auto w-full">
-      <p className="flex flex-col text-3xl text-center font-bold">
-        Unete
-        <span className="text-xl font-medium">y comparte tu experiencia!</span>
-      </p>
-      <ul className="flex justify-between w-full h-full">
-        <li className="flex flex-col items-center justify-center">
-          <Image
-            src="/images/Professor.svg"
-            height="300"
-            width="300"
-            alt="Education"
-            className="w-full h-full"
-          />
-          <p className="font-semibold text-lg">Califica a tus Profesores</p>
-        </li>
-        <li className="flex flex-col items-center justify-center">
-          <Image
-            src="/images/Secret.svg"
-            height="300"
-            width="300"
-            alt="Education"
-            className="w-full h-full"
-          />
-          <p className="font-semibold text-lg">Reseñas 100% anonimas</p>
-        </li>
-        <li className="flex flex-col items-center justify-center">
-          <Image
-            src="/images/University.svg"
-            height="300"
-            width="300"
-            alt="Education"
-            className="w-full h-full"
-          />
-          <p className="font-semibold text-lg">Califica tu Universidad</p>
-        </li>
-      </ul>
-      {!isSignedIn && (
-        <Link href="/sign-up">
-          <Button className="font-bold rounded-full" size="lg">
-            Crear una Cuenta
-          </Button>
-        </Link>
-      )}
+    <section className="flex flex-col w-full h-1/2 items-center justify-center py-12 max-w-7xl mx-auto">
+      <div className="flex flex-col justify-center items-center gap-3">
+        <p className="flex flex-col text-3xl text-center font-bold h-full">
+          Unete
+          <span className="text-xl font-medium">
+            y comparte tu experiencia!
+          </span>
+        </p>
+        <ul className="flex justify-between w-full h-full">
+          <li className="flex flex-col items-center justify-center">
+            <Image
+              src="/images/Professor.svg"
+              height="300"
+              width="300"
+              alt="Education"
+              className="w-full h-full"
+            />
+            <p className="font-semibold text-lg">Califica a tus Profesores</p>
+          </li>
+          <li className="flex flex-col items-center justify-center">
+            <Image
+              src="/images/Secret.svg"
+              height="300"
+              width="300"
+              alt="Education"
+              className="w-full h-full"
+            />
+            <p className="font-semibold text-lg">Reseñas 100% anonimas</p>
+          </li>
+          <li className="flex flex-col items-center justify-center">
+            <Image
+              src="/images/University.svg"
+              height="300"
+              width="300"
+              alt="Education"
+              className="w-full h-full"
+            />
+            <p className="font-semibold text-lg">Califica tu Universidad</p>
+          </li>
+        </ul>
+        {!isSignedIn && (
+          <Link href="/sign-up">
+            <Button className="font-bold rounded-full" size="lg">
+              Crear una Cuenta
+            </Button>
+          </Link>
+        )}
+      </div>
     </section>
   );
 };
