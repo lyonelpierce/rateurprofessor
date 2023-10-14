@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 const Info = () => {
   const { isSignedIn } = useAuth();
   return (
-    <section className="flex flex-col items-center justify-center py-12 max-w-7xl w-full">
+    <section className="flex flex-col h-1/2 items-center justify-center py-12 max-w-7xl mx-auto w-full">
       <p className="flex flex-col text-3xl text-center font-bold">
         Unete
         <span className="text-xl font-medium">y comparte tu experiencia!</span>

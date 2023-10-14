@@ -3,7 +3,7 @@ import Info from "@/components/Info";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center h-full">
+    <div className="h-full">
       <Hero />
       <Info />
     </div>
