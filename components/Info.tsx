@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 const Info = () => {
   const { isSignedIn } = useAuth();
   return (
-    <section className="flex flex-col items-center justify-center py-8 gap-8 max-w-7xl w-full h-full">
+    <section className="flex flex-col items-center justify-center py-12 gap-8 max-w-7xl w-full h-1/2">
       <p className="flex flex-col text-3xl text-center font-bold">
         Unete
         <span className="text-xl font-medium">y comparte tu experiencia!</span>
@@ -21,8 +21,9 @@ const Info = () => {
             height="300"
             width="300"
             alt="Education"
+            className="w-full h-full"
           />
-          <p className="font-semibold text-xl">Califica a tus Profesores</p>
+          <p className="font-semibold text-lg">Califica a tus Profesores</p>
         </li>
         <li className="flex flex-col items-center justify-center">
           <Image
@@ -30,8 +31,9 @@ const Info = () => {
             height="300"
             width="300"
             alt="Education"
+            className="w-full h-full"
           />
-          <p className="font-semibold text-xl">Reseñas 100% anonimas</p>
+          <p className="font-semibold text-lg">Reseñas 100% anonimas</p>
         </li>
         <li className="flex flex-col items-center justify-center">
           <Image
@@ -39,8 +41,9 @@ const Info = () => {
             height="300"
             width="300"
             alt="Education"
+            className="w-full h-full"
           />
-          <p className="font-semibold text-xl">Califica tu Universidad</p>
+          <p className="font-semibold text-lg">Califica tu Universidad</p>
         </li>
       </ul>
       {!isSignedIn && (
