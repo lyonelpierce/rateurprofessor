@@ -3,11 +3,11 @@ import Footer from "@/components/Footer";
 
 const LandingLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex flex-col h-full">
+    <>
       <Navbar />
-      <main className="h-full">{children}</main>
+      <main className="flex flex-col grow h-full">{children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 

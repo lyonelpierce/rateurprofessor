@@ -9,12 +9,12 @@ import { Button } from "./ui/button";
 const Info = () => {
   const { isSignedIn } = useAuth();
   return (
-    <section className="flex flex-col items-center justify-center py-12 gap-8 max-w-7xl w-full h-1/2">
+    <section className="flex flex-col items-center justify-center py-12 max-w-7xl w-full h-1/2">
       <p className="flex flex-col text-3xl text-center font-bold">
         Unete
         <span className="text-xl font-medium">y comparte tu experiencia!</span>
       </p>
-      <ul className="flex justify-between gap-8 w-full h-full mt-4">
+      <ul className="flex justify-between w-full h-full">
         <li className="flex flex-col items-center justify-center">
           <Image
             src="/images/Professor.svg"
