@@ -9,9 +9,9 @@ import { Button } from "./ui/button";
 const Info = () => {
   const { isSignedIn } = useAuth();
   return (
-    <section className="flex flex-col w-full h-1/2 items-center justify-center py-12 max-w-7xl mx-auto">
-      <div className="flex flex-col justify-center items-center gap-3">
-        <p className="flex flex-col text-3xl text-center font-bold h-full">
+    <section className="flex-grow flex items-center max-w-7xl mx-auto">
+      <div className="flex flex-col gap-4 justify-center items-center">
+        <p className="flex flex-col text-3xl text-center font-bold">
           Unete
           <span className="text-xl font-medium">
             y comparte tu experiencia!
