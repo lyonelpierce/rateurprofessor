@@ -106,12 +106,12 @@ const University = ({ params }: any) => {
   };
 
   return (
-    <section className="h-full">
+    <section className="min-h-screen w-full h-full">
       {!isLoading && (
-        <div className="h-full">
+        <>
           <ProfileInfo university={university} />
-          <div className="flex flex-col max-w-7xl mx-auto h-full">
-            <div className="flex gap-8 items-center h-1/2 pt-72">
+          <div className="pt-72 flex flex-col max-w-7xl mx-auto min-h-screen">
+            <div className="flex gap-8 items-center py-8">
               <p className="text-9xl font-bold w-1/3 text-center">
                 {calculateRating("overallRating").toFixed(1)}
               </p>
@@ -143,7 +143,7 @@ const University = ({ params }: any) => {
                 ))}
               </ul>
             </div>
-            <div className="h-1/2 pb-16">
+            <div className="flex-grow flex flex-col pb-8">
               <p className="font-bold text-xl mb-2">
                 {university.universities.reviews.length}{" "}
                 {university.universities.reviews.length === 1
@@ -250,7 +250,7 @@ const University = ({ params }: any) => {
                   ))}
                 </ul>
               ) : (
-                <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold w-full h-full">
+                <ul className="flex-grow flex flex-col gap-1 bg-gray-100 p-12 justify-center items-center font-semibold w-full h-full rounded-md">
                   Aun no existen reviews para esta universidad.
                   <Link
                     href={`/universidad/${university.universities.id}/calificar`}
@@ -263,7 +263,7 @@ const University = ({ params }: any) => {
               )}
             </div>
           </div>
-        </div>
+        </>
       )}
     </section>
   );
