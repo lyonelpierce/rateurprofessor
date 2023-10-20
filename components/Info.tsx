@@ -9,8 +9,8 @@ import { Button } from "./ui/button";
 const Info = () => {
   const { isSignedIn } = useAuth();
   return (
-    <section className="flex-grow flex items-center max-w-7xl mx-auto">
-      <div className="flex flex-col gap-4 justify-center items-center">
+    <section className="flex-grow flex items-center">
+      <div className="flex flex-col items-center max-w-7xl mx-auto w-full gap-5">
         <p className="flex flex-col text-3xl text-center font-bold">
           Unete
           <span className="text-xl font-medium">
