@@ -47,6 +47,8 @@ const AddProfessor = ({ params }: any) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
+      course: "",
       rate: "",
       difficulty: "",
       again: "",
@@ -144,7 +146,7 @@ const AddProfessor = ({ params }: any) => {
                     {" "}
                     <FormField
                       control={form.control}
-                      name="rate"
+                      name="name"
                       render={({ field }) => (
                         <FormItem className="border p-4 shadow-md rounded-md">
                           <FormLabel className="font-semibold">
@@ -160,7 +162,7 @@ const AddProfessor = ({ params }: any) => {
                     />
                     <FormField
                       control={form.control}
-                      name="difficulty"
+                      name="course"
                       render={({ field }) => (
                         <FormItem className="border p-4 shadow-md rounded-md">
                           <FormLabel className="font-semibold">
