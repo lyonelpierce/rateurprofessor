@@ -250,7 +250,7 @@ const University = ({ params }: any) => {
                   ))}
                 </ul>
               ) : (
-                <div className="flex flex-col bg-gray-100 py-16 justify-center text-lg items-center font-semibold w-full rounded-md">
+                <div className="flex flex-col bg-gray-100 py-8 justify-center items-center font-semibold w-full rounded-md">
                   Aun no existen reviews para esta universidad.
                   <Link
                     href={`/universidad/${university.universities.id}/calificar`}

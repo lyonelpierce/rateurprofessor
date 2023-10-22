@@ -45,8 +45,10 @@ const ProfessorsList = ({ params }: any) => {
             <div className="flex flex-col gap-4 pt-64">
               <div className="bg-gray-100 p-8 flex flex-col gap-2 items-center justify-center rounded-md">
                 <p className="font-medium">No encuentras a tu profesor?</p>
-                <Link href="/">
-                  <Button>Agregalo</Button>
+                <Link href={`/universidad/${params.id}/nuevo`}>
+                  <Button className="border-0 bg-blue-600 hover:bg-blue-600/90">
+                    Agregalo
+                  </Button>
                 </Link>
               </div>
               <p className="font-bold text-xl">
