@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import ProfileInfo from "@/components/UniversityInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -41,8 +42,14 @@ const ProfessorsList = ({ params }: any) => {
         <>
           <ProfileInfo university={university} />
           <div className="max-w-7xl mx-auto py-10 h-full">
-            <div className="pt-64">
-              <p className="font-bold text-xl mb-2">
+            <div className="flex flex-col gap-4 pt-64">
+              <div className="bg-gray-100 p-8 flex flex-col gap-2 items-center justify-center rounded-md">
+                <p className="font-medium">No encuentras a tu profesor?</p>
+                <Link href="/">
+                  <Button>Agregalo</Button>
+                </Link>
+              </div>
+              <p className="font-bold text-xl">
                 {university.universities.professors.length}{" "}
                 {university.universities.professors.length === 1
                   ? "Profesor"
@@ -51,7 +58,7 @@ const ProfessorsList = ({ params }: any) => {
               <ul className="flex flex-col gap-4 w-full">
                 {university.universities.professors.map((professor: any) => (
                   <Link href={`/profesor/${professor.id}`} key={professor.id}>
-                    <li className="flex gap-5 bg-gray-100 hover:bg-gray-200 p-5 text-base font-bold">
+                    <li className="flex gap-5 bg-gray-100 hover:bg-gray-200 p-5 text-base font-bold rounded-md">
                       <div
                         className={cn(
                           "flex items-center justify-center p-4 w-20",
