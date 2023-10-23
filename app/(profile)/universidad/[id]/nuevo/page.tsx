@@ -219,9 +219,9 @@ const AddProfessor = ({ params }: any) => {
                                     placeholder="Buscar..."
                                     className="h-9"
                                   />
-                                  {/* <CommandEmpty>
+                                  <CommandEmpty>
                                     No se encontraron resultados.
-                                  </CommandEmpty> */}
+                                  </CommandEmpty>
                                   <CommandGroup className="p-0">
                                     {courses.map((course: any) => (
                                       <CommandItem
@@ -396,7 +396,7 @@ const AddProfessor = ({ params }: any) => {
                                     }
                                   </div>
                                 ) : (
-                                  <div className="flex mx-auto justify-between w-2/3 font-medium text-sm text-muted-foreground">
+                                  <div className="flex mx-auto justify-between w-1/3 font-medium text-sm text-muted-foreground">
                                     <p>1 - Pesimo</p>
                                     <p>5 - Excelente</p>
                                   </div>
@@ -551,7 +551,7 @@ const AddProfessor = ({ params }: any) => {
                                     }
                                   </div>
                                 ) : (
-                                  <div className="flex mx-auto justify-between w-2/3 font-medium text-sm text-muted-foreground">
+                                  <div className="flex mx-auto justify-between w-1/3 font-medium text-sm text-muted-foreground">
                                     <p>1 - Muy Fácil</p>
                                     <p>5 - Muy Díficil</p>
                                   </div>
