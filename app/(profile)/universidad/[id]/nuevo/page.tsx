@@ -16,6 +16,18 @@ import { formSchema } from "./constants";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
   Form,
   FormControl,
   FormDescription,
@@ -26,6 +38,7 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import ProfileInfo from "@/components/UniversityInfo";
+import { Check, ChevronsUpDown } from "lucide-react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -40,7 +53,13 @@ const AddProfessor = ({ params }: any) => {
     notFound();
   }
 
-  console.log(university);
+  const {
+    data: courses,
+    error: errorCourses,
+    isLoading: loadingCourses,
+  } = useSWR(`/api/profile/university/${params.id}/courses`, fetcher);
+
+  console.log(courses);
 
   const router = useRouter();
 
@@ -114,16 +133,13 @@ const AddProfessor = ({ params }: any) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await fetch(
-        `/api/profile/professor/${params.id}/rate/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch(`/api/profile/professor/${params.id}/add/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
       if (response.ok) {
         router.push(`/profesor/${params.id}`);
       }
@@ -142,41 +158,101 @@ const AddProfessor = ({ params }: any) => {
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="pt-64">
                 <div className="grid gap-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    {" "}
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem className="border p-4 shadow-md rounded-md">
-                          <FormLabel className="font-semibold">
-                            Cual es el nombre del docente?{" "}
-                            <span className="text-red-600">*</span>
-                          </FormLabel>
-                          <FormControl>
-                            <Input placeholder="Nombre" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="course"
-                      render={({ field }) => (
-                        <FormItem className="border p-4 shadow-md rounded-md">
-                          <FormLabel className="font-semibold">
-                            Que clase dicta este docente?{" "}
-                            <span className="text-red-600">*</span>
-                          </FormLabel>
-                          <FormControl>
-                            <Input placeholder="Clase" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  {" "}
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem className="border p-4 shadow-md rounded-md">
+                        <FormLabel className="font-semibold">
+                          Cual es el nombre del docente?{" "}
+                          <span className="text-red-600">*</span>
+                        </FormLabel>
+                        <FormControl>
+                          <div className="flex items-center justify-center">
+                            <Input
+                              placeholder="Nombre del docente"
+                              className="p-6 w-[300px] rounded-full"
+                              {...field}
+                            />
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="course"
+                    render={({ field }) => (
+                      <FormItem className="border p-4 shadow-md rounded-md">
+                        <FormLabel className="font-semibold">
+                          Que materia dicta este docente?{" "}
+                          <span className="text-red-600">*</span>
+                        </FormLabel>
+                        <FormControl>
+                          <div className="flex items-center justify-center">
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant="outline"
+                                    role="combobox"
+                                    className={cn(
+                                      "w-[300px] justify-between py-6",
+                                      !field.value && "text-muted-foreground"
+                                    )}
+                                  >
+                                    {field.value
+                                      ? courses.find(
+                                          (course: any) =>
+                                            course.value === field.value
+                                        )?.name
+                                      : "Seleccionar..."}
+                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-[300px] p-0 rounded-3xl overflow-hidden">
+                                <Command className="py-2">
+                                  <CommandInput
+                                    placeholder="Buscar..."
+                                    className="h-9"
+                                  />
+                                  <CommandEmpty>
+                                    No se encontraron resultados.
+                                  </CommandEmpty>
+                                  <CommandGroup className="p-0">
+                                    {courses.map((course: any) => (
+                                      <CommandItem
+                                        value={course.name}
+                                        key={course.id}
+                                        onSelect={() => {
+                                          form.setValue("course", course.name);
+                                        }}
+                                        className="rounded-none p-3 cursor-pointer"
+                                      >
+                                        {course.name}
+                                        <Check
+                                          className={cn(
+                                            "ml-auto h-4 w-4",
+                                            course.name === field.value
+                                              ? "opacity-100"
+                                              : "opacity-0"
+                                          )}
+                                        />
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+                                </Command>
+                              </PopoverContent>
+                            </Popover>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                     control={form.control}
                     name="rate"
@@ -552,8 +628,8 @@ const AddProfessor = ({ params }: any) => {
                   />
                   <FormDescription className="flex flex-col gap-4 items-center justify-center border shadow-md rounded-md p-4">
                     <span className="w-2/3 text-center font-medium">
-                      Al hacer click en el boton Calificar, reconozco que he
-                      leido y estoy de acuerdo con los{" "}
+                      Al hacer click en el boton Agregar y Calificar, reconozco
+                      que he leido y estoy de acuerdo con los{" "}
                       <Link
                         href="/"
                         className="text-blue-600 hover:text-blue-600/90"
@@ -574,7 +650,7 @@ const AddProfessor = ({ params }: any) => {
                       className="font-semibold px-12"
                       disabled={isFormFilled || isFormLoading}
                     >
-                      Calificar
+                      Agregar y Calificar
                     </Button>
                   </FormDescription>
                 </div>

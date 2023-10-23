@@ -44,3 +44,20 @@ export const getProfessor = async (id: string) => {
     return new NextResponse("Internal error", { status: 500 });
   }
 };
+
+export const getCourses = async (universityId: string) => {
+  try {
+    const courses = await prismadb.university
+      .findUnique({
+        where: {
+          id: universityId,
+        },
+      })
+      .courses();
+
+    return courses;
+  } catch (error) {
+    console.error("Error fetching courses", error);
+    return new NextResponse("Internal error", { status: 500 });
+  }
+};

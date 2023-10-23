@@ -16,13 +16,15 @@ const ProfileInfo = ({ university }: any) => {
             {university.universities.location}
           </p>
           <h2 className="text-3xl font-bold">
-            {pathname.includes("profesores") ? "Profesores - " : ""}
-            {pathname.includes("calificar") ? "Calificar - " : ""}
+            {pathname.includes("profesores") && "Profesores - "}
+            {pathname.includes("calificar") && "Calificar - "}
+            {pathname.includes("nuevo") && "Nuevo Profesor - "}
             {university.universities.name}
           </h2>
           <div className="flex gap-2">
             {!pathname.includes("profesores") &&
-              !pathname.includes("calificar") && (
+              !pathname.includes("calificar") &&
+              !pathname.includes("nuevo") && (
                 <Link
                   href={`/universidad/${university.universities.id}/calificar`}
                 >

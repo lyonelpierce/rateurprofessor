@@ -45,8 +45,8 @@ const Hero = () => {
     <section className="flex mt-20 h-[32rem] w-full bg-zinc-400 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
       <div className="flex flex-col items-center justify-center backdrop-blur w-full h-full">
         <div>
-          <p className="text-3xl font-semibold mb-5 text-center text-white">
-            Empieza encontrando tu{" "}
+          <p className="text-4xl font-semibold mb-5 text-center text-white">
+            Encuentra tu{" "}
             <span className="font-bold text-white"> Universidad</span>
           </p>
           <div className="flex w-full">
@@ -56,10 +56,10 @@ const Hero = () => {
                 className="flex w-full"
                 onClick={(e) => e.preventDefault()}
               >
-                <div className="w-full">
+                <div className="flex items-center justify-center">
                   <Input
                     placeholder="Buscar universidad..."
-                    className="rounded-full p-7 focus-visible:ring-0 focus-visible:ring-offset-0"
+                    className="rounded-full p-7 focus-visible:ring-0 focus-visible:ring-offset-0 w-[515px]"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                   />
