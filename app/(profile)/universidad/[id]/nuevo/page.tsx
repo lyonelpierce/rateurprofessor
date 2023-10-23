@@ -206,7 +206,7 @@ const AddProfessor = ({ params }: any) => {
                                     {field.value
                                       ? courses.find(
                                           (course: any) =>
-                                            course.value === field.value
+                                            course.name === field.value
                                         )?.name
                                       : "Seleccionar..."}
                                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -219,9 +219,9 @@ const AddProfessor = ({ params }: any) => {
                                     placeholder="Buscar..."
                                     className="h-9"
                                   />
-                                  <CommandEmpty>
+                                  {/* <CommandEmpty>
                                     No se encontraron resultados.
-                                  </CommandEmpty>
+                                  </CommandEmpty> */}
                                   <CommandGroup className="p-0">
                                     {courses.map((course: any) => (
                                       <CommandItem
