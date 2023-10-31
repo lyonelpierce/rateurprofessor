@@ -1,9 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { GeistSans } from "geist/font";
 import { ClerkProvider } from "@clerk/nextjs";
-
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Califica tu profesor",
@@ -18,7 +16,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${montserrat.className} min-h-screen`}>
+        <body className={`${GeistSans.className} min-h-screen`}>
           {children}
         </body>
       </html>

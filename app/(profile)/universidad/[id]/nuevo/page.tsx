@@ -16,18 +16,6 @@ import { formSchema } from "./constants";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
-import {
   Form,
   FormControl,
   FormDescription,
@@ -36,13 +24,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Check, ChevronsUpDown } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import ProfileInfo from "@/components/UniversityInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const AddProfessor = ({ params }: any) => {
+const AddProfessor = ({ params }: { params: { id: string } }) => {
   const {
     data: university,
     error,
@@ -52,14 +39,6 @@ const AddProfessor = ({ params }: any) => {
   if (error) {
     notFound();
   }
-
-  const {
-    data: courses,
-    error: errorCourses,
-    isLoading: loadingCourses,
-  } = useSWR(`/api/profile/university/${params.id}/courses`, fetcher);
-
-  console.log(courses);
 
   const router = useRouter();
 
@@ -75,7 +54,7 @@ const AddProfessor = ({ params }: any) => {
     },
   });
 
-  const rate = [
+  const rates = [
     {
       id: 1,
       description: "Pesimo",
@@ -98,7 +77,7 @@ const AddProfessor = ({ params }: any) => {
     },
   ];
 
-  const difficulty = [
+  const difficulties = [
     {
       id: 1,
       description: "Muy Fácil",
@@ -121,15 +100,13 @@ const AddProfessor = ({ params }: any) => {
     },
   ];
 
-  const [safety, setSafety] = useState(0);
-  const [hoverSafety, setHoverSafety] = useState(0);
-  const [selectedSafety, setSelectedSafety] = useState(0);
+  const [difficulty, setDifficulty] = useState(0);
+  const [hoverDifficulty, setHoverDifficulty] = useState(0);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(0);
 
-  const [facilities, setFacilities] = useState(0);
-  const [hoverFacilities, setHoverFacilities] = useState(0);
-  const [selectedFacilities, setSelectedFacilities] = useState(0);
-
-  const [search, setSearch] = useState("");
+  const [rate, setRate] = useState(0);
+  const [hoverRate, setHoverRate] = useState(0);
+  const [selectedRate, setSelectedRate] = useState(0);
 
   const isFormLoading = form.formState.isSubmitting;
 
@@ -151,7 +128,6 @@ const AddProfessor = ({ params }: any) => {
   const values = form.getValues();
   const isFormFilled = Object.values(values).includes("");
 
-  console.log(search);
   return (
     <section className="h-full">
       {!isLoading && (
@@ -190,75 +166,18 @@ const AddProfessor = ({ params }: any) => {
                     render={({ field }) => (
                       <FormItem className="border p-4 shadow-md rounded-md">
                         <FormLabel className="font-semibold">
-                          Que materia dicta el docente?{" "}
-                          <span className="text-red-600">*</span>{" "}
+                          Que materia dicta este docente?{" "}
+                          <span className="text-red-600">*</span>
                         </FormLabel>
-                        <div className="flex items-center justify-center">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <FormControl>
-                                <Button
-                                  variant="outline"
-                                  role="combobox"
-                                  className={cn(
-                                    "w-[300px] justify-between p-6",
-                                    !field.value && "text-muted-foreground"
-                                  )}
-                                >
-                                  {field.value
-                                    ? courses.find(
-                                        (course) => course.name === field.value
-                                      )?.name
-                                    : "Seleccionar materia"}
-                                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                </Button>
-                              </FormControl>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-[300px] p-0 overflow-hidden">
-                              <Command className="py-2">
-                                <CommandInput
-                                  placeholder="Buscar..."
-                                  className="h-9"
-                                  onInput={(event) => {
-                                    const inputValue = event.target.value;
-                                    setSearch(inputValue);
-                                  }}
-                                />
-                                <CommandEmpty className="p-3 text-sm cursor-pointer hover:bg-accent">
-                                  <div
-                                    onClick={() => {
-                                      form.setValue("course", search);
-                                    }}
-                                  >
-                                    Añadir {search}
-                                  </div>
-                                </CommandEmpty>
-                                <CommandGroup className="p-0 pt-2">
-                                  {courses.map((course) => (
-                                    <CommandItem
-                                      value={course.name}
-                                      key={course.id}
-                                      onSelect={() => {
-                                        form.setValue("course", course.name);
-                                      }}
-                                      className="cursor-pointer p-3"
-                                    >
-                                      {course.name}
-                                      <Check
-                                        className={cn(
-                                          "ml-auto h-4 w-4",
-                                          course.name === field.value
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                        )}
-                                      />
-                                    </CommandItem>
-                                  ))}
-                                </CommandGroup>
-                              </Command>
-                            </PopoverContent>
-                          </Popover>
-                        </div>
+                        <FormControl>
+                          <div className="flex items-center justify-center">
+                            <Input
+                              placeholder="Nombre de la materia"
+                              className="p-6 w-[300px] rounded-full"
+                              {...field}
+                            />
+                          </div>
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -289,15 +208,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="fac1"
                                   className={cn(
                                     "rounded-l-3xl h-12 w-16 bg-gray-200 hover:bg-red-400/70 cursor-pointer border border-white",
-                                    (facilities >= 1 || hoverFacilities >= 1) &&
+                                    (rate >= 1 || hoverRate >= 1) &&
                                       "bg-red-400"
                                   )}
                                   onClick={() => {
-                                    setFacilities(1);
-                                    setSelectedFacilities(1);
+                                    setRate(1);
+                                    setSelectedRate(1);
                                   }}
-                                  onMouseEnter={() => setHoverFacilities(1)}
-                                  onMouseLeave={() => setHoverFacilities(0)}
+                                  onMouseEnter={() => setHoverRate(1)}
+                                  onMouseLeave={() => setHoverRate(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -310,15 +229,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="fac2"
                                   className={cn(
                                     "rounded-none h-12 w-16 bg-gray-200 hover:bg-orange-400/70 cursor-pointer border border-white",
-                                    (facilities >= 2 || hoverFacilities >= 2) &&
+                                    (rate >= 2 || hoverRate >= 2) &&
                                       "bg-orange-400"
                                   )}
                                   onClick={() => {
-                                    setFacilities(2);
-                                    setSelectedFacilities(2);
+                                    setRate(2);
+                                    setSelectedRate(2);
                                   }}
-                                  onMouseEnter={() => setHoverFacilities(2)}
-                                  onMouseLeave={() => setHoverFacilities(0)}
+                                  onMouseEnter={() => setHoverRate(2)}
+                                  onMouseLeave={() => setHoverRate(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -331,15 +250,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="fac3"
                                   className={cn(
                                     "rounded-none h-12 w-16 bg-gray-200 hover:bg-yellow-400/70 cursor-pointer border border-white",
-                                    (facilities >= 3 || hoverFacilities >= 3) &&
+                                    (rate >= 3 || hoverRate >= 3) &&
                                       "bg-yellow-400"
                                   )}
                                   onClick={() => {
-                                    setFacilities(3);
-                                    setSelectedFacilities(3);
+                                    setRate(3);
+                                    setSelectedRate(3);
                                   }}
-                                  onMouseEnter={() => setHoverFacilities(3)}
-                                  onMouseLeave={() => setHoverFacilities(0)}
+                                  onMouseEnter={() => setHoverRate(3)}
+                                  onMouseLeave={() => setHoverRate(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -352,15 +271,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="fac4"
                                   className={cn(
                                     "rounded-none h-12 w-16 bg-gray-200 hover:bg-green-400/70 cursor-pointer border border-white",
-                                    (facilities >= 4 || hoverFacilities >= 4) &&
+                                    (rate >= 4 || hoverRate >= 4) &&
                                       "bg-green-400"
                                   )}
                                   onClick={() => {
-                                    setFacilities(4);
-                                    setSelectedFacilities(4);
+                                    setRate(4);
+                                    setSelectedRate(4);
                                   }}
-                                  onMouseEnter={() => setHoverFacilities(4)}
-                                  onMouseLeave={() => setHoverFacilities(0)}
+                                  onMouseEnter={() => setHoverRate(4)}
+                                  onMouseLeave={() => setHoverRate(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -373,36 +292,34 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="fac5"
                                   className={cn(
                                     "rounded-r-3xl h-12 w-16 bg-gray-200 hover:bg-green-600/70 cursor-pointer border border-white",
-                                    (facilities === 5 ||
-                                      hoverFacilities === 5) &&
+                                    (rate === 5 || hoverRate === 5) &&
                                       "bg-green-600"
                                   )}
                                   onClick={() => {
-                                    setFacilities(5);
-                                    setSelectedFacilities(5);
+                                    setRate(5);
+                                    setSelectedRate(5);
                                   }}
-                                  onMouseEnter={() => setHoverFacilities(5)}
-                                  onMouseLeave={() => setHoverFacilities(0)}
+                                  onMouseEnter={() => setHoverRate(5)}
+                                  onMouseLeave={() => setHoverRate(0)}
                                 />
                               </div>
                             </RadioGroup>
-                            {hoverFacilities ? (
+                            {hoverRate ? (
                               <div className="flex mx-auto justify-center w-full font-medium text-sm text-muted-foreground">
-                                {hoverFacilities} -{" "}
+                                {hoverRate} -{" "}
                                 {
-                                  rate.find((r) => r.id === hoverFacilities)
+                                  rates.find((r) => r.id === hoverRate)
                                     ?.description
                                 }
                               </div>
                             ) : (
                               <>
-                                {selectedFacilities ? (
+                                {selectedRate ? (
                                   <div className="flex mx-auto justify-center w-full font-medium text-sm">
-                                    {selectedFacilities} -{" "}
+                                    {selectedRate} -{" "}
                                     {
-                                      rate.find(
-                                        (r) => r.id === selectedFacilities
-                                      )?.description
+                                      rates.find((r) => r.id === selectedRate)
+                                        ?.description
                                     }
                                   </div>
                                 ) : (
@@ -445,15 +362,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="saf1"
                                   className={cn(
                                     "rounded-l-3xl h-12 w-16 bg-gray-200 hover:bg-red-400/70 cursor-pointer border border-white",
-                                    (safety >= 1 || hoverSafety >= 1) &&
+                                    (difficulty >= 1 || hoverDifficulty >= 1) &&
                                       "bg-red-400"
                                   )}
                                   onClick={() => {
-                                    setSafety(1);
-                                    setSelectedSafety(1);
+                                    setDifficulty(1);
+                                    setSelectedDifficulty(1);
                                   }}
-                                  onMouseEnter={() => setHoverSafety(1)}
-                                  onMouseLeave={() => setHoverSafety(0)}
+                                  onMouseEnter={() => setHoverDifficulty(1)}
+                                  onMouseLeave={() => setHoverDifficulty(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -466,15 +383,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="saf2"
                                   className={cn(
                                     "rounded-none h-12 w-16 bg-gray-200 hover:bg-orange-400/70 cursor-pointer border border-white",
-                                    (safety >= 2 || hoverSafety >= 2) &&
+                                    (difficulty >= 2 || hoverDifficulty >= 2) &&
                                       "bg-orange-400"
                                   )}
                                   onClick={() => {
-                                    setSafety(2);
-                                    setSelectedSafety(2);
+                                    setDifficulty(2);
+                                    setSelectedDifficulty(2);
                                   }}
-                                  onMouseEnter={() => setHoverSafety(2)}
-                                  onMouseLeave={() => setHoverSafety(0)}
+                                  onMouseEnter={() => setHoverDifficulty(2)}
+                                  onMouseLeave={() => setHoverDifficulty(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -487,15 +404,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="saf3"
                                   className={cn(
                                     "rounded-none h-12 w-16 bg-gray-200 hover:bg-yellow-400/70 cursor-pointer border border-white",
-                                    (safety >= 3 || hoverSafety >= 3) &&
+                                    (difficulty >= 3 || hoverDifficulty >= 3) &&
                                       "bg-yellow-400"
                                   )}
                                   onClick={() => {
-                                    setSafety(3);
-                                    setSelectedSafety(3);
+                                    setDifficulty(3);
+                                    setSelectedDifficulty(3);
                                   }}
-                                  onMouseEnter={() => setHoverSafety(3)}
-                                  onMouseLeave={() => setHoverSafety(0)}
+                                  onMouseEnter={() => setHoverDifficulty(3)}
+                                  onMouseLeave={() => setHoverDifficulty(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -508,15 +425,15 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="saf4"
                                   className={cn(
                                     "rounded-none h-12 w-16 bg-gray-200 hover:bg-green-400/70 cursor-pointer border border-white",
-                                    (safety >= 4 || hoverSafety >= 4) &&
+                                    (difficulty >= 4 || hoverDifficulty >= 4) &&
                                       "bg-green-400"
                                   )}
                                   onClick={() => {
-                                    setSafety(4);
-                                    setSelectedSafety(4);
+                                    setDifficulty(4);
+                                    setSelectedDifficulty(4);
                                   }}
-                                  onMouseEnter={() => setHoverSafety(4)}
-                                  onMouseLeave={() => setHoverSafety(0)}
+                                  onMouseEnter={() => setHoverDifficulty(4)}
+                                  onMouseLeave={() => setHoverDifficulty(0)}
                                 />
                               </div>
                               <div className="flex flex-col justify-center items-center">
@@ -529,34 +446,36 @@ const AddProfessor = ({ params }: any) => {
                                   htmlFor="saf5"
                                   className={cn(
                                     "rounded-r-3xl h-12 w-16 bg-gray-200 hover:bg-green-600/70 cursor-pointer border border-white",
-                                    (safety === 5 || hoverSafety === 5) &&
+                                    (difficulty === 5 ||
+                                      hoverDifficulty === 5) &&
                                       "bg-green-600"
                                   )}
                                   onClick={() => {
-                                    setSafety(5);
-                                    setSelectedSafety(5);
+                                    setDifficulty(5);
+                                    setSelectedDifficulty(5);
                                   }}
-                                  onMouseEnter={() => setHoverSafety(5)}
-                                  onMouseLeave={() => setHoverSafety(0)}
+                                  onMouseEnter={() => setHoverDifficulty(5)}
+                                  onMouseLeave={() => setHoverDifficulty(0)}
                                 />
                               </div>
                             </RadioGroup>
-                            {hoverSafety ? (
+                            {hoverDifficulty ? (
                               <div className="flex mx-auto justify-center w-full font-medium text-sm text-muted-foreground">
-                                {hoverSafety} -{" "}
+                                {hoverDifficulty} -{" "}
                                 {
-                                  difficulty.find((r) => r.id === hoverSafety)
-                                    ?.description
+                                  difficulties.find(
+                                    (r) => r.id === hoverDifficulty
+                                  )?.description
                                 }
                               </div>
                             ) : (
                               <>
-                                {selectedSafety ? (
+                                {selectedDifficulty ? (
                                   <div className="flex mx-auto justify-center w-full font-medium text-sm">
-                                    {selectedSafety} -{" "}
+                                    {selectedDifficulty} -{" "}
                                     {
-                                      difficulty.find(
-                                        (r) => r.id === selectedSafety
+                                      difficulties.find(
+                                        (r) => r.id === selectedDifficulty
                                       )?.description
                                     }
                                   </div>
