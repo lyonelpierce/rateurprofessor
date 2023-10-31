@@ -36,9 +36,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Check, ChevronsUpDown } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import ProfileInfo from "@/components/UniversityInfo";
-import { Check, ChevronsUpDown } from "lucide-react";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -129,6 +129,8 @@ const AddProfessor = ({ params }: any) => {
   const [hoverFacilities, setHoverFacilities] = useState(0);
   const [selectedFacilities, setSelectedFacilities] = useState(0);
 
+  const [search, setSearch] = useState("");
+
   const isFormLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -149,6 +151,7 @@ const AddProfessor = ({ params }: any) => {
   const values = form.getValues();
   const isFormFilled = Object.values(values).includes("");
 
+  console.log(search);
   return (
     <section className="h-full">
       {!isLoading && (
@@ -187,68 +190,75 @@ const AddProfessor = ({ params }: any) => {
                     render={({ field }) => (
                       <FormItem className="border p-4 shadow-md rounded-md">
                         <FormLabel className="font-semibold">
-                          Que materia dicta este docente?{" "}
-                          <span className="text-red-600">*</span>
+                          Que materia dicta el docente?{" "}
+                          <span className="text-red-600">*</span>{" "}
                         </FormLabel>
-                        <FormControl>
-                          <div className="flex items-center justify-center">
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <FormControl>
-                                  <Button
-                                    variant="outline"
-                                    role="combobox"
-                                    className={cn(
-                                      "w-[300px] justify-between py-6",
-                                      !field.value && "text-muted-foreground"
-                                    )}
+                        <div className="flex items-center justify-center">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <FormControl>
+                                <Button
+                                  variant="outline"
+                                  role="combobox"
+                                  className={cn(
+                                    "w-[300px] justify-between p-6",
+                                    !field.value && "text-muted-foreground"
+                                  )}
+                                >
+                                  {field.value
+                                    ? courses.find(
+                                        (course) => course.name === field.value
+                                      )?.name
+                                    : "Seleccionar materia"}
+                                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                </Button>
+                              </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-[300px] p-0 overflow-hidden">
+                              <Command className="py-2">
+                                <CommandInput
+                                  placeholder="Buscar..."
+                                  className="h-9"
+                                  onInput={(event) => {
+                                    const inputValue = event.target.value;
+                                    setSearch(inputValue);
+                                  }}
+                                />
+                                <CommandEmpty className="p-3 text-sm cursor-pointer hover:bg-accent">
+                                  <div
+                                    onClick={() => {
+                                      form.setValue("course", search);
+                                    }}
                                   >
-                                    {field.value
-                                      ? courses.find(
-                                          (course: any) =>
-                                            course.name === field.value
-                                        )?.name
-                                      : "Seleccionar..."}
-                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                  </Button>
-                                </FormControl>
-                              </PopoverTrigger>
-                              <PopoverContent className="w-[300px] p-0 rounded-3xl overflow-hidden">
-                                <Command className="py-2">
-                                  <CommandInput
-                                    placeholder="Buscar..."
-                                    className="h-9"
-                                  />
-                                  <CommandEmpty>
-                                    No se encontraron resultados.
-                                  </CommandEmpty>
-                                  <CommandGroup className="p-0">
-                                    {courses.map((course: any) => (
-                                      <CommandItem
-                                        value={course.name}
-                                        key={course.id}
-                                        onSelect={() => {
-                                          form.setValue("course", course.name);
-                                        }}
-                                        className="rounded-none p-3 cursor-pointer"
-                                      >
-                                        {course.name}
-                                        <Check
-                                          className={cn(
-                                            "ml-auto h-4 w-4",
-                                            course.name === field.value
-                                              ? "opacity-100"
-                                              : "opacity-0"
-                                          )}
-                                        />
-                                      </CommandItem>
-                                    ))}
-                                  </CommandGroup>
-                                </Command>
-                              </PopoverContent>
-                            </Popover>
-                          </div>
-                        </FormControl>
+                                    Añadir {search}
+                                  </div>
+                                </CommandEmpty>
+                                <CommandGroup className="p-0 pt-2">
+                                  {courses.map((course) => (
+                                    <CommandItem
+                                      value={course.name}
+                                      key={course.id}
+                                      onSelect={() => {
+                                        form.setValue("course", course.name);
+                                      }}
+                                      className="cursor-pointer p-3"
+                                    >
+                                      {course.name}
+                                      <Check
+                                        className={cn(
+                                          "ml-auto h-4 w-4",
+                                          course.name === field.value
+                                            ? "opacity-100"
+                                            : "opacity-0"
+                                        )}
+                                      />
+                                    </CommandItem>
+                                  ))}
+                                </CommandGroup>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
+                        </div>
                         <FormMessage />
                       </FormItem>
                     )}

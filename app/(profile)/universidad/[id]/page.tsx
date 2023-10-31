@@ -23,7 +23,7 @@ import {
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const University = ({ params }: any) => {
+const University = ({ params }: { params: { id: string } }) => {
   const {
     data: university,
     error,

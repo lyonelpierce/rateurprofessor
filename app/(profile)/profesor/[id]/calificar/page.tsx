@@ -28,7 +28,7 @@ import ProfileInfo from "@/components/ProfessorInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const RateProfessor = ({ params }: any) => {
+const RateProfessor = ({ params }: { params: { id: string } }) => {
   const {
     data: professor,
     error,

@@ -28,7 +28,7 @@ import ProfileInfo from "@/components/UniversityInfo";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const RateUniversity = ({ params }: any) => {
+const RateUniversity = ({ params }: { params: { id: string } }) => {
   const {
     data: university,
     error,
