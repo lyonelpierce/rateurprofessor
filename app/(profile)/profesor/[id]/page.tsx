@@ -162,7 +162,7 @@ const Professor = ({ params }: { params: { id: string } }) => {
                   ))}
                 </ul>
               ) : (
-                <ul className="flex flex-col bg-gray-100 rounded-md p-12 justify-center items-center font-semibold w-full h-full">
+                <ul className="flex flex-col bg-gray-100 rounded-md p-12 justify-center items-center font-semibold w-full h-full text-center">
                   Aun no existen reseñas para este profesor.
                   <Link href={`/profesor/${professor.professors.id}/calificar`}>
                     <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
