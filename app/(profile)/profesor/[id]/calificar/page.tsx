@@ -53,7 +53,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
     },
   });
 
-  const rate = [
+  const rates = [
     {
       id: 1,
       description: "Pesimo",
@@ -76,7 +76,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
     },
   ];
 
-  const difficulty = [
+  const difficulties = [
     {
       id: 1,
       description: "Muy Fácil",
@@ -99,13 +99,13 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
     },
   ];
 
-  const [safety, setSafety] = useState(0);
-  const [hoverSafety, setHoverSafety] = useState(0);
-  const [selectedSafety, setSelectedSafety] = useState(0);
+  const [difficulty, setDifficulty] = useState(0);
+  const [hoverDifficulty, setHoverDifficulty] = useState(0);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(0);
 
-  const [facilities, setFacilities] = useState(0);
-  const [hoverFacilities, setHoverFacilities] = useState(0);
-  const [selectedFacilities, setSelectedFacilities] = useState(0);
+  const [rate, setRate] = useState(0);
+  const [hoverRate, setHoverRate] = useState(0);
+  const [selectedRate, setSelectedRate] = useState(0);
 
   const isFormLoading = form.formState.isSubmitting;
 
@@ -191,16 +191,15 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="fac1"
                                     className={cn(
                                       "rounded-l-3xl h-12 w-16 bg-gray-200 hover:bg-red-400/70 cursor-pointer border border-white",
-                                      (facilities >= 1 ||
-                                        hoverFacilities >= 1) &&
+                                      (rate >= 1 || hoverRate >= 1) &&
                                         "bg-red-400"
                                     )}
                                     onClick={() => {
-                                      setFacilities(1);
-                                      setSelectedFacilities(1);
+                                      setRate(1);
+                                      setSelectedRate(1);
                                     }}
-                                    onMouseEnter={() => setHoverFacilities(1)}
-                                    onMouseLeave={() => setHoverFacilities(0)}
+                                    onMouseEnter={() => setHoverRate(1)}
+                                    onMouseLeave={() => setHoverRate(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -213,16 +212,15 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="fac2"
                                     className={cn(
                                       "rounded-none h-12 w-16 bg-gray-200 hover:bg-orange-400/70 cursor-pointer border border-white",
-                                      (facilities >= 2 ||
-                                        hoverFacilities >= 2) &&
+                                      (rate >= 2 || hoverRate >= 2) &&
                                         "bg-orange-400"
                                     )}
                                     onClick={() => {
-                                      setFacilities(2);
-                                      setSelectedFacilities(2);
+                                      setRate(2);
+                                      setSelectedRate(2);
                                     }}
-                                    onMouseEnter={() => setHoverFacilities(2)}
-                                    onMouseLeave={() => setHoverFacilities(0)}
+                                    onMouseEnter={() => setHoverRate(2)}
+                                    onMouseLeave={() => setHoverRate(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -235,16 +233,15 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="fac3"
                                     className={cn(
                                       "rounded-none h-12 w-16 bg-gray-200 hover:bg-yellow-400/70 cursor-pointer border border-white",
-                                      (facilities >= 3 ||
-                                        hoverFacilities >= 3) &&
+                                      (rate >= 3 || hoverRate >= 3) &&
                                         "bg-yellow-400"
                                     )}
                                     onClick={() => {
-                                      setFacilities(3);
-                                      setSelectedFacilities(3);
+                                      setRate(3);
+                                      setSelectedRate(3);
                                     }}
-                                    onMouseEnter={() => setHoverFacilities(3)}
-                                    onMouseLeave={() => setHoverFacilities(0)}
+                                    onMouseEnter={() => setHoverRate(3)}
+                                    onMouseLeave={() => setHoverRate(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -257,16 +254,15 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="fac4"
                                     className={cn(
                                       "rounded-none h-12 w-16 bg-gray-200 hover:bg-green-400/70 cursor-pointer border border-white",
-                                      (facilities >= 4 ||
-                                        hoverFacilities >= 4) &&
+                                      (rate >= 4 || hoverRate >= 4) &&
                                         "bg-green-400"
                                     )}
                                     onClick={() => {
-                                      setFacilities(4);
-                                      setSelectedFacilities(4);
+                                      setRate(4);
+                                      setSelectedRate(4);
                                     }}
-                                    onMouseEnter={() => setHoverFacilities(4)}
-                                    onMouseLeave={() => setHoverFacilities(0)}
+                                    onMouseEnter={() => setHoverRate(4)}
+                                    onMouseLeave={() => setHoverRate(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -279,36 +275,34 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="fac5"
                                     className={cn(
                                       "rounded-r-3xl h-12 w-16 bg-gray-200 hover:bg-green-600/70 cursor-pointer border border-white",
-                                      (facilities === 5 ||
-                                        hoverFacilities === 5) &&
+                                      (rate === 5 || hoverRate === 5) &&
                                         "bg-green-600"
                                     )}
                                     onClick={() => {
-                                      setFacilities(5);
-                                      setSelectedFacilities(5);
+                                      setRate(5);
+                                      setSelectedRate(5);
                                     }}
-                                    onMouseEnter={() => setHoverFacilities(5)}
-                                    onMouseLeave={() => setHoverFacilities(0)}
+                                    onMouseEnter={() => setHoverRate(5)}
+                                    onMouseLeave={() => setHoverRate(0)}
                                   />
                                 </div>
                               </RadioGroup>
-                              {hoverFacilities ? (
+                              {hoverRate ? (
                                 <div className="flex mx-auto justify-center w-full font-medium text-sm text-muted-foreground">
-                                  {hoverFacilities} -{" "}
+                                  {hoverRate} -{" "}
                                   {
-                                    rate.find((r) => r.id === hoverFacilities)
+                                    rates.find((r) => r.id === hoverRate)
                                       ?.description
                                   }
                                 </div>
                               ) : (
                                 <>
-                                  {selectedFacilities ? (
+                                  {selectedRate ? (
                                     <div className="flex mx-auto justify-center w-full font-medium text-sm">
-                                      {selectedFacilities} -{" "}
+                                      {selectedRate} -{" "}
                                       {
-                                        rate.find(
-                                          (r) => r.id === selectedFacilities
-                                        )?.description
+                                        rates.find((r) => r.id === selectedRate)
+                                          ?.description
                                       }
                                     </div>
                                   ) : (
@@ -351,15 +345,16 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="saf1"
                                     className={cn(
                                       "rounded-l-3xl h-12 w-16 bg-gray-200 hover:bg-red-400/70 cursor-pointer border border-white",
-                                      (safety >= 1 || hoverSafety >= 1) &&
+                                      (difficulty >= 1 ||
+                                        hoverDifficulty >= 1) &&
                                         "bg-red-400"
                                     )}
                                     onClick={() => {
-                                      setSafety(1);
-                                      setSelectedSafety(1);
+                                      setDifficulty(1);
+                                      setSelectedDifficulty(1);
                                     }}
-                                    onMouseEnter={() => setHoverSafety(1)}
-                                    onMouseLeave={() => setHoverSafety(0)}
+                                    onMouseEnter={() => setHoverDifficulty(1)}
+                                    onMouseLeave={() => setHoverDifficulty(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -372,15 +367,16 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="saf2"
                                     className={cn(
                                       "rounded-none h-12 w-16 bg-gray-200 hover:bg-orange-400/70 cursor-pointer border border-white",
-                                      (safety >= 2 || hoverSafety >= 2) &&
+                                      (difficulty >= 2 ||
+                                        hoverDifficulty >= 2) &&
                                         "bg-orange-400"
                                     )}
                                     onClick={() => {
-                                      setSafety(2);
-                                      setSelectedSafety(2);
+                                      setDifficulty(2);
+                                      setSelectedDifficulty(2);
                                     }}
-                                    onMouseEnter={() => setHoverSafety(2)}
-                                    onMouseLeave={() => setHoverSafety(0)}
+                                    onMouseEnter={() => setHoverDifficulty(2)}
+                                    onMouseLeave={() => setHoverDifficulty(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -393,15 +389,16 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="saf3"
                                     className={cn(
                                       "rounded-none h-12 w-16 bg-gray-200 hover:bg-yellow-400/70 cursor-pointer border border-white",
-                                      (safety >= 3 || hoverSafety >= 3) &&
+                                      (difficulty >= 3 ||
+                                        hoverDifficulty >= 3) &&
                                         "bg-yellow-400"
                                     )}
                                     onClick={() => {
-                                      setSafety(3);
-                                      setSelectedSafety(3);
+                                      setDifficulty(3);
+                                      setSelectedDifficulty(3);
                                     }}
-                                    onMouseEnter={() => setHoverSafety(3)}
-                                    onMouseLeave={() => setHoverSafety(0)}
+                                    onMouseEnter={() => setHoverDifficulty(3)}
+                                    onMouseLeave={() => setHoverDifficulty(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -414,15 +411,16 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="saf4"
                                     className={cn(
                                       "rounded-none h-12 w-16 bg-gray-200 hover:bg-green-400/70 cursor-pointer border border-white",
-                                      (safety >= 4 || hoverSafety >= 4) &&
+                                      (difficulty >= 4 ||
+                                        hoverDifficulty >= 4) &&
                                         "bg-green-400"
                                     )}
                                     onClick={() => {
-                                      setSafety(4);
-                                      setSelectedSafety(4);
+                                      setDifficulty(4);
+                                      setSelectedDifficulty(4);
                                     }}
-                                    onMouseEnter={() => setHoverSafety(4)}
-                                    onMouseLeave={() => setHoverSafety(0)}
+                                    onMouseEnter={() => setHoverDifficulty(4)}
+                                    onMouseLeave={() => setHoverDifficulty(0)}
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
@@ -435,34 +433,36 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                     htmlFor="saf5"
                                     className={cn(
                                       "rounded-r-3xl h-12 w-16 bg-gray-200 hover:bg-green-600/70 cursor-pointer border border-white",
-                                      (safety === 5 || hoverSafety === 5) &&
+                                      (difficulty === 5 ||
+                                        hoverDifficulty === 5) &&
                                         "bg-green-600"
                                     )}
                                     onClick={() => {
-                                      setSafety(5);
-                                      setSelectedSafety(5);
+                                      setDifficulty(5);
+                                      setSelectedDifficulty(5);
                                     }}
-                                    onMouseEnter={() => setHoverSafety(5)}
-                                    onMouseLeave={() => setHoverSafety(0)}
+                                    onMouseEnter={() => setHoverDifficulty(5)}
+                                    onMouseLeave={() => setHoverDifficulty(0)}
                                   />
                                 </div>
                               </RadioGroup>
-                              {hoverSafety ? (
+                              {hoverDifficulty ? (
                                 <div className="flex mx-auto justify-center w-full font-medium text-sm text-muted-foreground">
-                                  {hoverSafety} -{" "}
+                                  {hoverDifficulty} -{" "}
                                   {
-                                    difficulty.find((r) => r.id === hoverSafety)
-                                      ?.description
+                                    difficulties.find(
+                                      (r) => r.id === hoverDifficulty
+                                    )?.description
                                   }
                                 </div>
                               ) : (
                                 <>
-                                  {selectedSafety ? (
+                                  {selectedDifficulty ? (
                                     <div className="flex mx-auto justify-center w-full font-medium text-sm">
-                                      {selectedSafety} -{" "}
+                                      {selectedDifficulty} -{" "}
                                       {
-                                        difficulty.find(
-                                          (r) => r.id === selectedSafety
+                                        difficulties.find(
+                                          (r) => r.id === selectedDifficulty
                                         )?.description
                                       }
                                     </div>
