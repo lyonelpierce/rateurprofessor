@@ -129,14 +129,17 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
   const isFormFilled = Object.values(values).includes("");
 
   return (
-    <section className="h-full">
+    <section className="flex-grow h-full">
       {!isLoading && (
         <>
           <ProfileInfo professor={professor} />
-          <div className="max-w-7xl mx-auto py-60 h-full">
+          <div className="max-w-7xl mx-auto h-full px-4">
             {professor.isReviewed ? (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="pt-64">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="pt-80 md:pt-72 pb-8"
+                >
                   <div className="grid gap-4">
                     <FormField
                       control={form.control}
@@ -516,7 +519,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                       )}
                     />
                     <FormDescription className="flex flex-col gap-4 items-center justify-center border shadow-md rounded-md p-4">
-                      <span className="w-2/3 text-center font-medium">
+                      <span className="md:w-2/3 text-center font-medium">
                         Al hacer click en el boton Calificar, reconozco que he
                         leido y estoy de acuerdo con los{" "}
                         <Link
