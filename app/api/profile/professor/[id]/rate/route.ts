@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   const difficultyRating = parseInt(difficulty, 10);
 
   try {
-    const response = await saveProfessorRating(
+    await saveProfessorRating(
       id,
       course,
       rateRating,

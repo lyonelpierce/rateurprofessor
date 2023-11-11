@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import prismadb from "./pismadb";
 import { subMonths, isBefore } from "date-fns";
-import { ca } from "date-fns/locale";
 
 export const checkUniversityRating = async () => {
   const { userId } = auth();
@@ -35,7 +34,7 @@ export const checkUniversityRating = async () => {
   }
 };
 
-export const checkProfessorRating = async () => {
+export const checkProfessorRating = async (professorId: string) => {
   const { userId } = auth();
   if (!userId) return true;
 
@@ -44,6 +43,9 @@ export const checkProfessorRating = async () => {
       where: {
         user: {
           userId: userId,
+        },
+        professor: {
+          id: professorId,
         },
       },
       orderBy: {
@@ -55,17 +57,15 @@ export const checkProfessorRating = async () => {
 
     if (!lastReview) {
       return true;
-    } else {
-      const sixMonthsAgo = subMonths(new Date(), 6);
-      const reviewDate = new Date(lastReview.createdAt);
-      if (isBefore(reviewDate, sixMonthsAgo)) {
-        return true;
-      }
     }
 
-    return false;
+    const sixMonthsAgo = subMonths(new Date(), 6);
+    const reviewDate = new Date(lastReview.createdAt);
+    return isBefore(reviewDate, sixMonthsAgo);
   } catch (error) {
     console.error("Error:", error);
+    // Handle the error appropriately, e.g., return false or throw an exception
+    return false;
   }
 };
 
@@ -153,7 +153,7 @@ export const saveProfessorRating = async (
   const { userId } = auth();
   if (!userId) return;
 
-  const isRatingAllowed = await checkProfessorRating();
+  const isRatingAllowed = await checkProfessorRating(id);
 
   console.log(isRatingAllowed);
 
