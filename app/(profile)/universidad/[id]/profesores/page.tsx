@@ -80,8 +80,9 @@ const ProfessorsList = ({ params }: any) => {
                           }
                         )}
                       >
-                        {" "}
-                        {calculateRating(professor, "rate")}/5
+                        {calculateRating(professor, "rate") > 0
+                          ? `${calculateRating(professor, "rate")}/5`
+                          : `-/-`}
                       </div>
                       <div className="flex flex-col justify-center">
                         {professor.name}
