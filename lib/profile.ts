@@ -14,7 +14,6 @@ export const getUniversity = async (id: string) => {
             reviews: true,
           },
         },
-        courses: true,
         reviews: true,
       },
     });
@@ -41,23 +40,6 @@ export const getProfessor = async (id: string) => {
     return professor;
   } catch (error) {
     console.error("Error fetching professor", error);
-    return new NextResponse("Internal error", { status: 500 });
-  }
-};
-
-export const getCourses = async (universityId: string) => {
-  try {
-    const courses = await prismadb.university
-      .findUnique({
-        where: {
-          id: universityId,
-        },
-      })
-      .courses();
-
-    return courses;
-  } catch (error) {
-    console.error("Error fetching courses", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };

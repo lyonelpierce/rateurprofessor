@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import prismadb from "./pismadb";
 import { subMonths, isBefore } from "date-fns";
+import { ca } from "date-fns/locale";
 
 export const checkUniversityRating = async () => {
   const { userId } = auth();
@@ -143,6 +144,7 @@ export const saveUniversityRating = async (
 
 export const saveProfessorRating = async (
   id: string,
+  courseName: string,
   rate: number,
   again: number,
   difficulty: number,
@@ -163,6 +165,13 @@ export const saveProfessorRating = async (
   }
 
   try {
+    const course = await saveCourse(courseName);
+
+    if (!course) {
+      console.error("Error saving course. Course is undefined.");
+      return;
+    }
+
     const isOnDb = await prismadb.user.findUnique({
       where: {
         userId: userId,
@@ -193,8 +202,37 @@ export const saveProfessorRating = async (
             id: id,
           },
         },
+        course: {
+          connect: {
+            id: course.id,
+          },
+        },
       },
     });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const saveCourse = async (courseName: string) => {
+  try {
+    const existingCourse = await prismadb.course.findUnique({
+      where: {
+        name: courseName,
+      },
+    });
+
+    if (existingCourse) {
+      return existingCourse;
+    }
+
+    const newCourse = await prismadb.course.create({
+      data: {
+        name: courseName,
+      },
+    });
+
+    return newCourse;
   } catch (error) {
     console.error("Error:", error);
   }

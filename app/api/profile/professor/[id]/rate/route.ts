@@ -11,11 +11,11 @@ export async function POST(req: Request) {
 
   const body = await req.json();
 
-  const { rate, difficulty, again, content } = body;
+  const { rate, difficulty, again, content, course } = body;
 
   if (!userId) return new NextResponse("Unauthorized", { status: 401 });
 
-  if (!rate || !again || !difficulty || !content)
+  if (!rate || !again || !difficulty || !content || !course)
     return new NextResponse("Missing fields", { status: 400 });
 
   const rateRating = parseInt(rate, 10);
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
   try {
     const response = await saveProfessorRating(
       id,
+      course,
       rateRating,
       againRating,
       difficultyRating,
@@ -35,5 +36,5 @@ export async function POST(req: Request) {
     console.error("Error:", error);
   }
 
-  return NextResponse.json("hello");
+  return NextResponse.json("Error", { status: 500 });
 }

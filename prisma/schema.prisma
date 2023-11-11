@@ -25,7 +25,6 @@ model University {
   regimen     String
   tipo        String
   professors  Professor[]
-  courses     Course[] 
   reviews     UniversityReview[]
   createdAt   DateTime   @default(now())
 }
@@ -36,7 +35,6 @@ model Professor {
   userId        String       
   university    University   @relation(fields: [universityId], references: [id])
   universityId  String
-  courses       Course[]   
   reviews       ProfessorReview[]
   createdAt     DateTime     @default(now())
 
@@ -45,10 +43,11 @@ model Professor {
 
 model Course {
   id            String       @id @default(cuid())
-  name          String
-  professors    Professor[]  
-  universities  University[]
+  name          String       @unique
+  professorReviews ProfessorReview[]
   createdAt     DateTime     @default(now())
+
+  @@index([id])
 }
 
 model ProfessorReview {
@@ -61,10 +60,14 @@ model ProfessorReview {
   userId        String
   professor     Professor    @relation(fields: [professorId], references: [id])
   professorId   String
+  course        Course       @relation(fields: [courseId], references: [id])
+  courseId      String
   createdAt     DateTime     @default(now())
 
   @@index([userId])
   @@index([professorId])
+  @@index([courseId])
+
 }
 
 model UniversityReview {

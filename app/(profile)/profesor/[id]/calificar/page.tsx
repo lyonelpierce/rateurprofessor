@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { formSchema } from "./constants";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -44,6 +45,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      course: "",
       rate: "",
       difficulty: "",
       again: "",
@@ -141,6 +143,28 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                   className="pt-80 md:pt-72 pb-8"
                 >
                   <div className="grid gap-4">
+                    <FormField
+                      control={form.control}
+                      name="course"
+                      render={({ field }) => (
+                        <FormItem className="border p-4 shadow-md rounded-md">
+                          <FormLabel className="font-semibold">
+                            Que materia dicta este docente?{" "}
+                            <span className="text-red-600">*</span>
+                          </FormLabel>
+                          <FormControl>
+                            <div className="flex items-center justify-center">
+                              <Input
+                                placeholder="Nombre de la materia"
+                                className="p-6 w-[300px] rounded-full"
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                     <FormField
                       control={form.control}
                       name="rate"
@@ -474,7 +498,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                               >
                                 <div className="flex flex-col items-center gap-2">
                                   <RadioGroupItem
-                                    value="0"
+                                    value="1"
                                     id="option-one"
                                     className="h-8 w-8"
                                   />
@@ -482,7 +506,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                 </div>
                                 <div className="flex flex-col items-center gap-2">
                                   <RadioGroupItem
-                                    value="1"
+                                    value="0"
                                     id="option-two"
                                     className="h-8 w-8"
                                   />

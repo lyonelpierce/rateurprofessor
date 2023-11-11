@@ -6,7 +6,7 @@ export const formSchema = z.object({
     .min(5, { message: "El nombre debe contener al menos 5 caracteres." }),
   course: z
     .string()
-    .min(5, { message: "El curso debe contener al menos 5 caracteres." }),
+    .min(5, { message: "La materia debe contener al menos 5 caracteres." }),
   rate: z.enum(["", "1", "2", "3", "4", "5"]),
   difficulty: z.enum(["", "1", "2", "3", "4", "5"]),
   again: z.enum(["", "0", "1"]),
