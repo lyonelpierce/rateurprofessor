@@ -9,8 +9,8 @@ const ProfileInfo = ({ professor }: any) => {
   const pathname = usePathname();
 
   return (
-    <section className="fixed mt-20 w-full bg-white shadow-md p-8 z-20">
-      <div className="flex max-w-7xl justify-between items-center mx-auto">
+    <section className="fixed mt-20 w-full bg-white shadow-md p-6 md:p-8 z-20">
+      <div className="flex max-w-7xl justify-between items-center mx-auto h-36">
         <div className="flex flex-col gap-1 w-full">
           <h2 className="text-3xl font-bold">
             {pathname.includes("calificar") ? "Calificar - " : ""}

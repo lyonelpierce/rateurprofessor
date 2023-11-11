@@ -47,7 +47,9 @@ const Hero = () => {
         <div>
           <p className="text-2xl md:text-4xl font-semibold mb-5 text-center text-white tracking-wide">
             Encuentra tu{" "}
-            <span className="font-extrabold text-white"> Universidad</span>
+            <span className="font-extrabold text-white text-4xl">
+              <br className="md:hidden" /> Universidad
+            </span>
           </p>
           <div className="flex w-full">
             <Popover open={open} onOpenChange={setOpen}>

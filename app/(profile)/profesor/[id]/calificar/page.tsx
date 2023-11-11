@@ -140,7 +140,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="pt-80 md:pt-72 pb-8"
+                  className="pt-72 md:pt-80 pb-8"
                 >
                   <div className="grid gap-4">
                     <FormField
@@ -574,7 +574,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
               </Form>
             ) : (
               <div className="flex items-center justify-center pt-52 p-5 h-full w-full">
-                <p className="flex flex-col justify-center items-center font-medium text-base gap-2 w-full">
+                <p className="flex flex-col justify-center text-center items-center font-medium text-base gap-2 w-full">
                   <span className="text-2xl font-semibold">
                     Ya calificaste a este profesor.
                   </span>
