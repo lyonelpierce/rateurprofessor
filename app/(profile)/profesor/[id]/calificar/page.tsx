@@ -133,7 +133,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
       {!isLoading && (
         <>
           <ProfileInfo professor={professor} />
-          <div className="max-w-7xl mx-auto h-full px-4">
+          <div className="max-w-7xl mx-auto h-full px-4 md:px-0">
             {professor.isReviewed ? (
               <Form {...form}>
                 <form

@@ -110,7 +110,7 @@ const University = ({ params }: { params: { id: string } }) => {
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4">
+          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4 md:px-0">
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center py-4">
               <p className="text-9xl font-bold w-full md:w-1/3 text-center">
                 {calculateRating("overallRating").toFixed(1)}
