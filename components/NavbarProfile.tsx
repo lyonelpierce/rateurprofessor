@@ -12,7 +12,7 @@ const NavbarProfile = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-black h-20 z-20">
-      <div className="flex max-w-7xl justify-between items-center mx-auto h-full">
+      <div className="flex max-w-7xl justify-between items-center mx-auto h-full px-6">
         <Link href="/">
           <Logo fill="#fff" text="#000" />
         </Link>

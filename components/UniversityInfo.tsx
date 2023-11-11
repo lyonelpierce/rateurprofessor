@@ -9,13 +9,13 @@ const ProfileInfo = ({ university }: any) => {
   const pathname = usePathname();
 
   return (
-    <section className="fixed mt-20 w-full bg-white shadow-md p-8 z-20">
+    <section className="fixed mt-20 w-full bg-white shadow-md p-6 md:p-8 z-20">
       <div className="flex max-w-7xl justify-between items-center mx-auto">
         <div className="flex flex-col gap-1 w-full">
-          <p className="font-semibold text-muted-foreground">
+          <p className="text-base font-semibold text-muted-foreground">
             {university.universities.location}
           </p>
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-xl md:text-3xl font-bold">
             {pathname.includes("profesores") && "Profesores - "}
             {pathname.includes("calificar") && "Calificar - "}
             {pathname.includes("nuevo") && "Nuevo Profesor - "}

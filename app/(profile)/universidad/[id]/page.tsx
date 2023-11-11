@@ -110,24 +110,26 @@ const University = ({ params }: { params: { id: string } }) => {
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto">
-            <div className="flex gap-8 items-center py-4">
-              <p className="text-9xl font-bold w-1/3 text-center">
+          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-6">
+            <div className="flex flex-col md:flex-row gap-8 justify-center items-center py-4">
+              <p className="text-9xl font-bold w-full md:w-1/3 text-center">
                 {calculateRating("overallRating").toFixed(1)}
               </p>
-              <ul className="grid grid-cols-2 w-2/3 gap-4">
+              <ul className="grid grid-cols-2 w-full md:w-2/3 gap-4">
                 {aspectData.map((aspect) => (
                   <li
                     className="flex justify-between items-center"
                     key={aspect.label}
                   >
-                    <div className="flex gap-2 w-5/6">
+                    <div className="flex gap-1 md:gap-2 w-5/6">
                       {aspect.icon}
-                      <p className="text-lg font-semibold">{aspect.label}</p>
+                      <p className="text-sm md:text-lg font-semibold">
+                        {aspect.label}
+                      </p>
                     </div>
                     <p
                       className={cn(
-                        "py-1 px-5 font-semibold text-lg w-1/6",
+                        "py-1 text-center font-semibold text-sm md:text-lg w-1/6",
                         (calculateRating(aspect.aspectKey) >= 3 &&
                           calculateRating(aspect.aspectKey) < 4 &&
                           "bg-yellow-400/80") ||
@@ -250,8 +252,10 @@ const University = ({ params }: { params: { id: string } }) => {
                   ))}
                 </ul>
               ) : (
-                <div className="flex flex-col bg-gray-100 gap-2 py-8 justify-center items-center font-semibold w-full rounded-md">
-                  Aun no existen reviews para esta universidad.
+                <div className="flex flex-col flex-grow h-full bg-gray-100 gap-2 py-8 justify-center items-center font-semibold w-full rounded-md">
+                  <p className="text-center">
+                    Aun no existen reviews para esta universidad.
+                  </p>
                   <Link
                     href={`/universidad/${university.universities.id}/calificar`}
                   >
