@@ -62,7 +62,7 @@ const Professor = ({ params }: { params: { id: string } }) => {
         <>
           <ProfileInfo professor={professor} />
           <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4">
-            <div className="flex flex-col md:flex-row gap-8 justify-center items-center py-12">
+            <div className="md:flex flex-col md:flex-row gap-8 justify-center items-center py-12 hidden">
               <p className="flex flex-col items-center text-xl md:text-5xl font-bold text-center w-1/3">
                 {calculateRating("difficulty")}/5
                 <span className="text-xl font-semibold">Dificultad</span>
@@ -77,6 +77,28 @@ const Professor = ({ params }: { params: { id: string } }) => {
                   Lo volveria a elegir
                 </span>
               </p>
+            </div>
+            <div className="flex flex-col gap-8 justify-center items-center py-12 md:hidden">
+              <p className="flex flex-col items-center text-6xl md:text-8xl font-bold text-center w-full">
+                {calculateRating("rate")}/5
+                <span className="text-base md:text-xl font-semibold">
+                  General
+                </span>
+              </p>
+              <div className="flex w-full">
+                <p className="flex flex-col items-center text-2xl md:text-5xl font-bold text-center w-1/2">
+                  {calculateRating("difficulty")}/5
+                  <span className="text-base md:text-xl font-semibold">
+                    Dificultad
+                  </span>
+                </p>
+                <p className="flex flex-col items-center text-2xl md:text-5xl font-bold text-center w-1/2">
+                  {calculateAgainPercentage()}%
+                  <span className="text-base md:text-xl font-semibold">
+                    Lo volveria a elegir
+                  </span>
+                </p>
+              </div>
             </div>
             <div className="flex h-full flex-col pb-8">
               <p className="font-bold text-xl mb-2">
@@ -101,38 +123,40 @@ const Professor = ({ params }: { params: { id: string } }) => {
                           ).getFullYear()}`}
                         </p>
                       </div>
-                      <div
-                        className={cn(
-                          "flex items-center justify-center p-4 w-20",
-                          (review.rate < 3 && "bg-red-400") ||
-                            (review.rate >= 3 &&
-                              review.rate < 4 &&
-                              "bg-yellow-400") ||
-                            (review.rate >= 4 && "bg-green-400")
-                        )}
-                      >
-                        <p className="text-2xl md:text-3xl font-black">
-                          {review.rate}.0
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-2 w-full">
-                        <div className="flex flex-col md:flex-row md:gap-10 font-medium">
-                          <p className="flex gap-5">
-                            Dificultad:{" "}
-                            <span className="font-bold">
-                              {review.difficulty}/5
-                            </span>
-                          </p>
-                          <p className="flex gap-5">
-                            Lo volveria a elegir:{" "}
-                            <span className="font-bold">
-                              {review.again ? "Si" : "No"}
-                            </span>
+                      <div className="flex gap-4 pt-4 w-full">
+                        <div
+                          className={cn(
+                            "p-4 w-20 h-fit flex justify-center items-center",
+                            (review.rate < 3 && "bg-red-400") ||
+                              (review.rate >= 3 &&
+                                review.rate < 4 &&
+                                "bg-yellow-400") ||
+                              (review.rate >= 4 && "bg-green-400")
+                          )}
+                        >
+                          <p className="text-2xl md:text-3xl font-black">
+                            {review.rate}.0
                           </p>
                         </div>
-                        <p className="font-medium capitalize w-full">
-                          {review.content}
-                        </p>
+                        <div className="flex flex-col gap-2 w-full">
+                          <div className="flex flex-col md:flex-row md:gap-10 font-medium">
+                            <p className="flex gap-5">
+                              Dificultad:{" "}
+                              <span className="font-bold">
+                                {review.difficulty}/5
+                              </span>
+                            </p>
+                            <p className="flex gap-5">
+                              Lo volveria a elegir:{" "}
+                              <span className="font-bold">
+                                {review.again ? "Si" : "No"}
+                              </span>
+                            </p>
+                          </div>
+                          <p className="font-medium break-all capitalize w-full">
+                            {review.content}
+                          </p>
+                        </div>
                       </div>
                     </li>
                   ))}
