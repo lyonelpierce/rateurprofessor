@@ -62,7 +62,7 @@ const Professor = ({ params }: { params: { id: string } }) => {
         <div className="h-full">
           <ProfileInfo professor={professor} />
           <div className="max-w-7xl mx-auto h-full">
-            <div className="flex justify-between items-center w-full pt-80 h-1/3">
+            <div className="flex justify-between items-center w-full pt-96 h-1/3">
               <p className="flex flex-col items-center text-5xl font-bold text-center">
                 {calculateRating("difficulty")}/5
                 <span className="text-xl font-semibold">Dificultad</span>
@@ -136,8 +136,8 @@ const Professor = ({ params }: { params: { id: string } }) => {
                   ))}
                 </ul>
               ) : (
-                <ul className="flex flex-col bg-gray-100 p-12 justify-center items-center font-semibold w-full h-full">
-                  Aun no existen reviews para este profesor.
+                <ul className="flex flex-col bg-gray-100 rounded-md p-12 justify-center items-center font-semibold w-full h-full">
+                  Aun no existen reseñas para este profesor.
                   <Link href={`/profesor/${professor.professors.id}/calificar`}>
                     <Button className="font-semibold mt-2 bg-blue-600 hover:bg-blue-600/90">
                       Calificar

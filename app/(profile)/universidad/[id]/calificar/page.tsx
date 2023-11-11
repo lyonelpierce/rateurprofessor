@@ -145,14 +145,17 @@ const RateUniversity = ({ params }: { params: { id: string } }) => {
   const isFormFilled = Object.values(values).includes("");
 
   return (
-    <section className="h-full">
+    <section className="flex-grow h-full">
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="max-w-7xl mx-auto py-10 h-full">
+          <div className="max-w-7xl mx-auto h-full">
             {university.isReviewed ? (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="pt-64">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="pt-72 pb-8"
+                >
                   <div className="grid grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -1786,8 +1789,8 @@ const RateUniversity = ({ params }: { params: { id: string } }) => {
                 </form>
               </Form>
             ) : (
-              <div className="flex items-center justify-center pt-52 p-5 h-full">
-                <p className="flex flex-col justify-center items-center font-medium text-base gap-2">
+              <div className="flex items-center justify-center p-5 h-full">
+                <p className="flex flex-col justify-center items-center font-medium text-base gap-2 pt-64">
                   <span className="text-2xl font-semibold">
                     Ya calificaste esta universidad.
                   </span>
