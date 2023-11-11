@@ -119,10 +119,22 @@ const AddProfessor = ({ params }: { params: { id: string } }) => {
         },
         body: JSON.stringify(values),
       });
+
       if (response.ok) {
-        router.push(`/profesor/${params.id}`);
+        const responseData = await response.json();
+        const { success, professorId } = responseData;
+
+        if (success && professorId) {
+          router.push(`/profesor/${professorId}`);
+        } else {
+          console.error("Error: Success is false or professorId is missing");
+        }
+      } else {
+        console.error("Error: Response status is not OK");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const values = form.getValues();

@@ -237,3 +237,36 @@ const saveCourse = async (courseName: string) => {
     console.error("Error:", error);
   }
 };
+
+export const saveProfessor = async (name: string, universityId: string) => {
+  const { userId } = auth();
+  if (!userId) return;
+
+  try {
+    const existingProfessor = await prismadb.professor.findUnique({
+      where: {
+        name: name,
+      },
+    });
+
+    if (existingProfessor) {
+      return existingProfessor.id;
+    }
+
+    const newProfessor = await prismadb.professor.create({
+      data: {
+        name: name,
+        userId: userId,
+        university: {
+          connect: {
+            id: universityId,
+          },
+        },
+      },
+    });
+
+    return newProfessor.id;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
