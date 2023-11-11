@@ -57,28 +57,28 @@ const Professor = ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <section className="h-full">
+    <>
       {!isLoading && (
-        <div className="h-full">
+        <>
           <ProfileInfo professor={professor} />
-          <div className="max-w-7xl mx-auto h-full">
-            <div className="flex justify-between items-center w-full pt-96 h-1/3">
-              <p className="flex flex-col items-center text-5xl font-bold text-center">
+          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4">
+            <div className="flex flex-col md:flex-row gap-8 justify-center items-center py-12">
+              <p className="flex flex-col items-center text-xl md:text-5xl font-bold text-center w-1/3">
                 {calculateRating("difficulty")}/5
                 <span className="text-xl font-semibold">Dificultad</span>
               </p>
-              <p className="flex flex-col items-center text-8xl font-bold text-center">
+              <p className="flex flex-col items-center text-5xl md:text-8xl font-bold text-center md:w-1/3">
                 {calculateRating("rate")}/5
                 <span className="text-xl font-semibold">General</span>
               </p>
-              <p className="flex flex-col items-center text-5xl font-bold text-center">
+              <p className="flex flex-col items-center text-xl md:text-5xl font-bold text-center w-1/3">
                 {calculateAgainPercentage()}%
                 <span className="text-xl font-semibold">
                   Lo volveria a elegir
                 </span>
               </p>
             </div>
-            <div className="h-2/3 py-20">
+            <div className="flex h-full flex-col pb-8">
               <p className="font-bold text-xl mb-2">
                 {professor.professors.reviews.length}{" "}
                 {professor.professors.reviews.length === 1
@@ -86,11 +86,11 @@ const Professor = ({ params }: { params: { id: string } }) => {
                   : "Calificaciones"}
               </p>
               {professor.professors.reviews.length > 0 ? (
-                <ul>
+                <ul className="flex flex-col gap-4">
                   {professor.professors.reviews.map((review: any) => (
                     <li
                       key={review.id}
-                      className="flex bg-gray-100 gap-5 w-full relative pt-12 px-5 pb-8"
+                      className="flex gap-4 bg-gray-100 rounded-md px-5 py-8 relative"
                     >
                       <div className="absolute right-0 top-0 p-5">
                         <p className="text-sm font-semibold">
@@ -111,10 +111,12 @@ const Professor = ({ params }: { params: { id: string } }) => {
                             (review.rate >= 4 && "bg-green-400")
                         )}
                       >
-                        <p className="text-3xl font-black">{review.rate}.0</p>
+                        <p className="text-2xl md:text-3xl font-black">
+                          {review.rate}.0
+                        </p>
                       </div>
                       <div className="flex flex-col gap-2 w-full">
-                        <div className="flex gap-10 font-medium">
+                        <div className="flex flex-col md:flex-row md:gap-10 font-medium">
                           <p className="flex gap-5">
                             Dificultad:{" "}
                             <span className="font-bold">
@@ -128,7 +130,7 @@ const Professor = ({ params }: { params: { id: string } }) => {
                             </span>
                           </p>
                         </div>
-                        <p className="font-medium capitalize">
+                        <p className="font-medium capitalize w-full">
                           {review.content}
                         </p>
                       </div>
@@ -147,9 +149,9 @@ const Professor = ({ params }: { params: { id: string } }) => {
               )}
             </div>
           </div>
-        </div>
+        </>
       )}
-    </section>
+    </>
   );
 };
 

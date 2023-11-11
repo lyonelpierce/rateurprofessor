@@ -149,14 +149,14 @@ const RateUniversity = ({ params }: { params: { id: string } }) => {
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="max-w-7xl mx-auto h-full">
+          <div className="max-w-7xl mx-auto h-full px-4">
             {university.isReviewed ? (
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="pt-72 pb-8"
                 >
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="facilities"

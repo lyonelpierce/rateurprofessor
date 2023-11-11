@@ -110,7 +110,7 @@ const University = ({ params }: { params: { id: string } }) => {
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-6">
+          <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4">
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center py-4">
               <p className="text-9xl font-bold w-full md:w-1/3 text-center">
                 {calculateRating("overallRating").toFixed(1)}
@@ -168,91 +168,88 @@ const University = ({ params }: { params: { id: string } }) => {
                           ).getFullYear()}`}
                         </p>
                       </div>
-                      <div
-                        className={cn(
-                          "p-4 w-20 h-fit flex justify-center items-center",
-                          (review.overallRating >= 3 &&
-                            review.overallRating < 4 &&
-                            "bg-yellow-400/80") ||
-                            (review.overallRating < 3 && "bg-red-400/80") ||
-                            (review.overallRating >= 4 && "bg-green-400/80")
-                        )}
-                      >
-                        <p className="text-3xl font-black">
-                          {review.overallRating}
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-4 w-full">
-                        <p className="capitalize font-medium">
-                          {review.content}
-                        </p>
-                        <ul className="grid grid-cols-2 gap-4">
-                          {aspectData.map((aspect, i) => (
-                            <li
-                              className="flex justify-between items-center font-semibold text-sm"
-                              key={aspect.label}
-                            >
-                              {aspect.label}
-                              <ul className="flex gap-1">
-                                {[1, 2, 3, 4, 5].map((rating) => (
-                                  <li
-                                    key={rating}
-                                    className={cn("bg-gray-200 h-5 w-10", {
-                                      "rounded-l-full": rating === 1,
-                                      "rounded-r-full": rating === 5,
-                                      "bg-red-400":
-                                        rating >= 1 &&
-                                        rating <=
-                                          parseFloat(
-                                            university.universities.reviews[0][
-                                              aspect.aspectKey
-                                            ]
-                                          ),
-                                      "bg-orange-400":
-                                        rating >= 2 &&
-                                        rating <=
-                                          parseFloat(
-                                            university.universities.reviews[0][
-                                              aspect.aspectKey
-                                            ]
-                                          ),
-                                      "bg-yellow-400":
-                                        rating >= 3 &&
-                                        rating <=
-                                          parseFloat(
-                                            university.universities.reviews[0][
-                                              aspect.aspectKey
-                                            ]
-                                          ),
-                                      "bg-green-400":
-                                        rating >= 4 &&
-                                        rating <=
-                                          parseFloat(
-                                            university.universities.reviews[0][
-                                              aspect.aspectKey
-                                            ]
-                                          ),
-                                      "bg-green-600":
-                                        rating >= 5 &&
-                                        rating ===
-                                          parseFloat(
-                                            university.universities.reviews[0][
-                                              aspect.aspectKey
-                                            ]
-                                          ),
-                                    })}
-                                  ></li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="flex gap-4 pt-4 w-full">
+                        <div
+                          className={cn(
+                            "p-4 w-20 h-fit flex justify-center items-center",
+                            (review.overallRating >= 3 &&
+                              review.overallRating < 4 &&
+                              "bg-yellow-400/80") ||
+                              (review.overallRating < 3 && "bg-red-400/80") ||
+                              (review.overallRating >= 4 && "bg-green-400/80")
+                          )}
+                        >
+                          <p className="text-3xl font-black">
+                            {review.overallRating}
+                          </p>
+                        </div>
+                        <div className="flex flex-col gap-4 w-full">
+                          <p className="capitalize font-medium break-all">
+                            {review.content}
+                          </p>
+                          <ul className="md:grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 w-full hidden">
+                            {aspectData.map((aspect, i) => (
+                              <li
+                                className="flex flex-col md:flex-row justify-between items-center font-semibold text-sm"
+                                key={aspect.label}
+                              >
+                                {aspect.label}
+                                <ul className="flex gap-1">
+                                  {[1, 2, 3, 4, 5].map((rating) => (
+                                    <li
+                                      key={rating}
+                                      className={cn("bg-gray-200 h-5 w-10", {
+                                        "rounded-l-full": rating === 1,
+                                        "rounded-r-full": rating === 5,
+                                        "bg-red-400":
+                                          rating >= 1 &&
+                                          rating <=
+                                            parseFloat(
+                                              university.universities
+                                                .reviews[0][aspect.aspectKey]
+                                            ),
+                                        "bg-orange-400":
+                                          rating >= 2 &&
+                                          rating <=
+                                            parseFloat(
+                                              university.universities
+                                                .reviews[0][aspect.aspectKey]
+                                            ),
+                                        "bg-yellow-400":
+                                          rating >= 3 &&
+                                          rating <=
+                                            parseFloat(
+                                              university.universities
+                                                .reviews[0][aspect.aspectKey]
+                                            ),
+                                        "bg-green-400":
+                                          rating >= 4 &&
+                                          rating <=
+                                            parseFloat(
+                                              university.universities
+                                                .reviews[0][aspect.aspectKey]
+                                            ),
+                                        "bg-green-600":
+                                          rating >= 5 &&
+                                          rating ===
+                                            parseFloat(
+                                              university.universities
+                                                .reviews[0][aspect.aspectKey]
+                                            ),
+                                      })}
+                                    ></li>
+                                  ))}
+                                </ul>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <div className="flex flex-col flex-grow h-full bg-gray-100 gap-2 py-8 justify-center items-center font-semibold w-full rounded-md">
+                <div className="flex flex-col flex-grow h-full bg-gray-100 gap-2 py-8 p-4 justify-center items-center font-semibold w-full rounded-md">
                   <p className="text-center">
                     Aun no existen reviews para esta universidad.
                   </p>
