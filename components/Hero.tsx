@@ -87,7 +87,9 @@ const Hero = () => {
                           >
                             <GraduationCap className="ml-4" />
                             <div className="p-4">
-                              <p className="font-bold">{item.name}</p>
+                              <p className="font-bold capitalize">
+                                {item.name.toLowerCase()}
+                              </p>
                               <p className="font-semibold">{item.location}</p>
                             </div>
                           </li>
