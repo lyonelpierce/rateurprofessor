@@ -22,13 +22,15 @@ const Navbar = () => {
               <Link href="/sign-in">
                 <Button
                   variant="outline"
-                  className="border-0 font-bold hover:bg-transparent"
+                  className="border-0 font-bold hover:bg-transparent text-xs md:text-sm"
                 >
                   Iniciar Sesión
                 </Button>
               </Link>
               <Link href="/sign-up">
-                <Button className="font-bold">Crear una Cuenta</Button>
+                <Button className="text-xs md:text-sm font-bold">
+                  Crear una Cuenta
+                </Button>
               </Link>
             </>
           ) : (
