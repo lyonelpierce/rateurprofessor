@@ -6,6 +6,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 export const metadata: Metadata = {
   title: "Califica tu profesor",
   description: "Califica a tus profesores",
+  icons: {
+    icon: "/Logo.ico",
+  },
 };
 
 export default function RootLayout({
