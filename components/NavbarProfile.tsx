@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
-import Logo from "./Logo";
 import { Button } from "./ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { useAuth } from "@clerk/nextjs";
@@ -14,7 +14,7 @@ const NavbarProfile = () => {
     <nav className="fixed top-0 w-full bg-black h-20 z-20">
       <div className="flex max-w-7xl justify-between items-center mx-auto h-full px-4 md:px-0">
         <Link href="/">
-          <Logo fill="#fff" text="#000" />
+          <Image src="/Logo.svg" width={60} height={60} alt="Logo Emoji" />
         </Link>
         <div className="flex">
           {!isSignedIn ? (
