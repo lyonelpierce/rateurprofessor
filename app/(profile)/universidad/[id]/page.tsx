@@ -87,7 +87,6 @@ const University = ({ params }: { params: { id: string } }) => {
     },
   ];
 
-  // CALCULATE  RATING
   const calculateRating = (aspectKey: string) => {
     if (
       !university.universities.reviews ||

@@ -306,7 +306,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                       }
                                     </div>
                                   ) : (
-                                    <div className="flex mx-auto justify-between w-2/3 font-medium text-sm text-muted-foreground">
+                                    <div className="flex mx-auto justify-between md:w-2/3 font-medium text-sm text-muted-foreground">
                                       <p>1 - Pesimo</p>
                                       <p>5 - Excelente</p>
                                     </div>
@@ -467,7 +467,7 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                                       }
                                     </div>
                                   ) : (
-                                    <div className="flex mx-auto justify-between w-2/3 font-medium text-sm text-muted-foreground">
+                                    <div className="flex mx-auto justify-between md:w-2/3 font-medium text-sm text-muted-foreground">
                                       <p>1 - Muy Fácil</p>
                                       <p>5 - Muy Díficil</p>
                                     </div>

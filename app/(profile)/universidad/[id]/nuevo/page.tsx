@@ -145,7 +145,7 @@ const AddProfessor = ({ params }: { params: { id: string } }) => {
       {!isLoading && (
         <>
           <ProfileInfo university={university} />
-          <div className="max-w-7xl mx-auto py-10 h-full">
+          <div className="max-w-7xl mx-auto py-10 h-full px-4 md:px-0">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="pt-64">
                 <div className="grid gap-4">
@@ -335,7 +335,7 @@ const AddProfessor = ({ params }: { params: { id: string } }) => {
                                     }
                                   </div>
                                 ) : (
-                                  <div className="flex mx-auto justify-between w-1/3 font-medium text-sm text-muted-foreground">
+                                  <div className="flex mx-auto justify-between md:w-1/3 font-medium text-sm text-muted-foreground">
                                     <p>1 - Pesimo</p>
                                     <p>5 - Excelente</p>
                                   </div>
@@ -492,7 +492,7 @@ const AddProfessor = ({ params }: { params: { id: string } }) => {
                                     }
                                   </div>
                                 ) : (
-                                  <div className="flex mx-auto justify-between w-1/3 font-medium text-sm text-muted-foreground">
+                                  <div className="flex mx-auto justify-between md:w-1/3 font-medium text-sm text-muted-foreground">
                                     <p>1 - Muy Fácil</p>
                                     <p>5 - Muy Díficil</p>
                                   </div>
