@@ -18,7 +18,7 @@ const PopoverContent = React.forwardRef<
       className,
       align = "center",
       sideOffset = 4,
-      side = "bottom",
+      side = "top",
       avoidCollisions = false,
       ...props
     },
