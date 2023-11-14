@@ -85,7 +85,7 @@ const Hero = () => {
                         <Link href={`/universidad/${item.id}`} key={i}>
                           <li
                             key={item.id}
-                            className="flex items-center gap-4 p-1 w-full text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
+                            className="flex items-center gap-4 p-1 w-fullte text-xs md:text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
                           >
                             <GraduationCap className="ml-4" />
                             <div className="p-4">
