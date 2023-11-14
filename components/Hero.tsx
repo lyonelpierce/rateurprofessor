@@ -41,6 +41,8 @@ const Hero = () => {
     }
   }, [data, searchText]);
 
+  const maxSuggestions = window.innerWidth < 768 ? 3 : 5;
+
   return (
     <section className="flex mt-20 h-96 md:h-[32rem] w-full bg-zinc-500 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
       <div className="flex flex-col items-center justify-center backdrop-blur-sm w-full h-full">
@@ -78,7 +80,7 @@ const Hero = () => {
                     </li>
                   ) : (
                     suggestions
-                      .filter((_, index) => index < 5)
+                      .filter((_, index) => index < maxSuggestions)
                       .map((item, i) => (
                         <Link href={`/universidad/${item.id}`} key={i}>
                           <li
