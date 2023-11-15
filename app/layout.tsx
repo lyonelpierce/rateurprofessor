@@ -4,8 +4,8 @@ import { GeistSans } from "geist/font/sans";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: "Califica tu profesor - Ecuador",
-  description: "Califica a tus profesores",
+  title: "Calificatuprofe",
+  description: "Califica a Profesores y Universidades de Ecuador",
   icons: {
     icon: "/Logo.ico",
   },
