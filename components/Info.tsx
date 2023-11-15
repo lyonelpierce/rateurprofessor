@@ -50,7 +50,7 @@ const Info = () => {
           </li>
         </ul>
         {!isSignedIn && (
-          <Link href="/sign-up" className="mt-4">
+          <Link href="/sign-up">
             <Button className="font-bold rounded-full" size="lg">
               Crear una Cuenta
             </Button>
