@@ -52,7 +52,7 @@ const Hero = () => {
           <div className="text-center font-bold text-white text-4xl md:text-6xl mb-5">
             <TypewriterComponent
               options={{
-                strings: ["Universidad.", "Instituto."],
+                strings: ["Universidad", "Instituto"],
                 autoStart: true,
                 loop: true,
               }}
