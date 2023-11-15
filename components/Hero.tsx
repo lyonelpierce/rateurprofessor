@@ -41,8 +41,6 @@ const Hero = () => {
     }
   }, [data, searchText]);
 
-  const maxSuggestions = window.innerWidth < 768 ? 3 : 5;
-
   return (
     <section className="flex mt-20 h-96 md:h-[32rem] w-full bg-zinc-500 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat bg-blend-multiply">
       <div className="flex flex-col items-center justify-center backdrop-blur-sm w-full h-full">
@@ -80,19 +78,21 @@ const Hero = () => {
                     </li>
                   ) : (
                     suggestions
-                      .filter((_, index) => index < maxSuggestions)
+                      .filter((_, index) => index < 5)
                       .map((item, i) => (
                         <Link href={`/universidad/${item.id}`} key={i}>
                           <li
                             key={item.id}
-                            className="flex items-center gap-4 p-1 w-fullte text-xs md:text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
+                            className="flex items-center gap-4 md:p-1 w-full text-xs md:text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
                           >
                             <GraduationCap className="ml-4" />
                             <div className="p-4">
                               <p className="font-bold capitalize">
                                 {item.name.toLowerCase()}
                               </p>
-                              <p className="font-semibold">{item.location}</p>
+                              <p className="font-semibold hidden md:flex">
+                                {item.location}
+                              </p>
                             </div>
                           </li>
                         </Link>
