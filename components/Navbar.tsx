@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-white h-20 z-[100] shadow-2xl">
-      <div className="flex max-w-7xl justify-between items-center mx-auto h-full px-4 md:px-0">
+      <div className="flex max-w-7xl justify-between items-center mx-auto h-full px-4">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/Logo.svg" width={50} height={50} alt="Logo Emoji" />
           <h1 className="md:flex text-[1.35rem] font-bold pt-2 hidden">
