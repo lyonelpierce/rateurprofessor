@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
+import TypewriterComponent from "typewriter-effect";
 
 import { Input } from "@/components/ui/input";
 import {
@@ -47,8 +48,15 @@ const Hero = () => {
         <div>
           <p className="text-2xl md:text-4xl font-semibold mb-5 text-center text-white tracking-wide">
             Encuentra tu{" "}
-            <span className="font-extrabold text-white text-4xl">
-              <br className="md:hidden" /> Universidad
+            <span className="font-extrabold text-white text-4xl md:text-6xl">
+              <br className="md:hidden" />{" "}
+              <TypewriterComponent
+                options={{
+                  strings: ["Universidad.", "Instituto."],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
             </span>
           </p>
           <div className="flex w-full">

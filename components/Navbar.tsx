@@ -16,7 +16,9 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-2">
           <Image src="/Logo.svg" width={60} height={60} alt="Logo Emoji" />
           <h1 className="md:flex text-[1.35rem] font-bold pt-2 hidden">
-            <span className="text-[#fca00a]">Califica</span>tuprofe
+            <span className="text-[#ec3f3e]">Califica</span>
+            <span className="text-[#f77f00]">tu</span>
+            <span className="text-[#fec603]">profe</span>
           </h1>
         </Link>
         <div className="flex">
