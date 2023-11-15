@@ -68,7 +68,7 @@ const Hero = () => {
                 <div className="flex items-center justify-center">
                   <Input
                     placeholder="Buscar universidad..."
-                    className="rounded-full p-7 focus-visible:ring-0 focus-visible:ring-offset-0 w-[350px] md:w-[515px]"
+                    className="rounded-full text-sm md:text-base p-7 focus-visible:ring-0 focus-visible:ring-offset-0 w-[350px] md:w-[515px]"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                   />
