@@ -11,7 +11,7 @@ const Footer = () => {
           &copy; {currentYear} Style593 LLC, Todos los derechos reservados.
         </p>
         <Link href="/">
-          <Image src="/Logo.svg" width={60} height={60} alt="Logo Emoji" />
+          <Image src="/Logo.svg" width={50} height={50} alt="Logo Emoji" />
         </Link>
       </div>
     </footer>
