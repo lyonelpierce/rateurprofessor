@@ -24,7 +24,7 @@ const Info = () => {
               height="300"
               width="300"
               alt="Education"
-              className="w-full h-full"
+              className="w-2/3 md:w-full h-full"
             />
             <p className="font-semibold text-lg">Califica a tus Profesores</p>
           </li>
@@ -34,7 +34,7 @@ const Info = () => {
               height="300"
               width="300"
               alt="Education"
-              className="w-full h-full"
+              className="w-2/3 md:w-full h-full"
             />
             <p className="font-semibold text-lg">Reseñas 100% anonimas</p>
           </li>
@@ -44,7 +44,7 @@ const Info = () => {
               height="300"
               width="300"
               alt="Education"
-              className="w-full h-full"
+              className="w-2/3 md:w-full h-full"
             />
             <p className="font-semibold text-lg">Califica tu Universidad</p>
           </li>

@@ -46,19 +46,18 @@ const Hero = () => {
     <section className="flex mt-20 h-96 md:h-[32rem] w-full bg-zinc-500 bg-[url('/images/hero.jpg')] bg-cover md:bg-center bg-no-repeat bg-blend-multiply">
       <div className="flex flex-col items-center justify-center backdrop-blur-sm w-full h-full">
         <div>
-          <p className="text-2xl md:text-4xl font-semibold mb-5 text-center text-white tracking-wide">
-            Encuentra tu{" "}
-            <span className="font-extrabold text-white text-4xl md:text-6xl">
-              <br className="md:hidden" />{" "}
-              <TypewriterComponent
-                options={{
-                  strings: ["Universidad.", "Instituto."],
-                  autoStart: true,
-                  loop: true,
-                }}
-              />
-            </span>
+          <p className="text-2xl md:text-4xl font-semibold text-center text-white tracking-wide">
+            Encuentra tu <br className="md:hidden" />
           </p>
+          <div className="text-center font-bold text-white text-4xl md:text-6xl mb-5">
+            <TypewriterComponent
+              options={{
+                strings: ["Universidad.", "Instituto."],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </div>
           <div className="flex w-full">
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger
