@@ -78,7 +78,7 @@ const Hero = () => {
                     </li>
                   ) : (
                     suggestions
-                      .filter((_, index) => index < 5)
+                      .filter((_, index) => index < 3)
                       .map((item, i) => (
                         <Link href={`/universidad/${item.id}`} key={i}>
                           <li
