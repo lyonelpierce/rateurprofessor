@@ -6,10 +6,6 @@ import { checkUniversityRating } from "@/lib/rate";
 export const revalidate = 0;
 
 export async function GET(req: Request) {
-  console.log(
-    "------------------------------------------Request URL:",
-    req.url
-  );
   const pathname = new URL(req.url).pathname;
   const id = pathname.split("/university/")[1];
 

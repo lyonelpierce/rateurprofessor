@@ -15,11 +15,11 @@ const ProfileInfo = ({ university }: any) => {
           <p className="text-base font-semibold text-muted-foreground">
             {university.universities.location}
           </p>
-          <h2 className="text-xl md:text-3xl font-bold capitalize">
+          <h2 className="text-xl md:text-3xl font-bold">
             {pathname.includes("profesores") && "Profesores - "}
             {pathname.includes("calificar") && "Calificar - "}
             {pathname.includes("nuevo") && "Nuevo Profesor - "}
-            {university.universities.name.toLowerCase()}
+            {university.universities.name}
           </h2>
           <div className="flex gap-2">
             {!pathname.includes("profesores") &&

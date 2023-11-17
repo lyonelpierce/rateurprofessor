@@ -1,3 +1,12 @@
+export type Professor = {
+  id: string;
+  name: string;
+  userId: string;
+  universityId: string;
+  createdAt: string;
+  reviews: any[];
+};
+
 export type University = {
   id: string;
   name: string;
@@ -6,7 +15,7 @@ export type University = {
   regimen: string;
   tipo: string;
   createdAt: string;
-  professors: any[];
+  professors: Professor[];
   reviews: any[];
 };
 
