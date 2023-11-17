@@ -4,13 +4,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import { UniversityData } from "@/constants/UniversityType";
 
-const ProfileInfo = ({ university }: any) => {
+type ProfileInfoProps = {
+  university: UniversityData;
+};
+
+const ProfileInfo = ({ university }: ProfileInfoProps) => {
   const pathname = usePathname();
 
   return (
     <section className="fixed mt-20 w-full bg-white shadow-md p-6 md:p-8 z-20">
-      <div className="flex max-w-7xl justify-between items-center mx-auto">
+      <div className="flex max-w-7xl justify-between items-center mx-auto px-4">
         <div className="flex flex-col gap-1 w-full">
           <p className="text-base font-semibold text-muted-foreground">
             {university.universities.location}
