@@ -1,29 +1,25 @@
 import { NextResponse } from "next/server";
 
-import { getUniversity } from "@/lib/profile";
-import { checkUniversityRating } from "@/lib/rate";
+import { getProfessor } from "@/lib/profile";
+import { checkProfessorRating } from "@/lib/rate";
 
 export const revalidate = 0;
 
 export async function GET(req: Request) {
-  console.log(
-    "------------------------------------------Request URL:",
-    req.url
-  );
   const pathname = new URL(req.url).pathname;
-  const id = pathname.split("/university/")[1];
+  const id = pathname.split("/professor/")[1];
 
   try {
-    const universities = await getUniversity(id);
+    const professors = await getProfessor(id);
 
-    if (!universities) {
+    if (!professors) {
       return new NextResponse("Not found", { status: 404 });
     }
 
-    const isReviewed = await checkUniversityRating();
+    const isReviewed = await checkProfessorRating(id);
 
     const responseData = {
-      universities,
+      professors,
       isReviewed,
     };
 
@@ -33,6 +29,7 @@ export async function GET(req: Request) {
       },
     });
   } catch (error) {
+    console.log(error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
