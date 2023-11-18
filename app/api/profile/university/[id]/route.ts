@@ -16,7 +16,7 @@ export async function GET(req: Request) {
       return new NextResponse("Not found", { status: 404 });
     }
 
-    const isReviewed = await checkUniversityRating();
+    const isReviewed = await checkUniversityRating(id);
 
     const responseData = {
       universities,

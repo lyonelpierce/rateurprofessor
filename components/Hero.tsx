@@ -46,7 +46,7 @@ const Hero = () => {
     <section className="flex mt-20 h-96 md:h-[32rem] w-full bg-zinc-500 bg-[url('/images/hero.jpg')] bg-cover md:bg-center bg-no-repeat bg-blend-multiply">
       <div className="flex flex-col items-center justify-center backdrop-blur-sm w-full h-full">
         <div>
-          <p className="text-2xl md:text-4xl font-semibold text-center text-white tracking-wide">
+          <p className="text-2xl md:text-3xl font-semibold text-center text-white tracking-wide">
             Encuentra tu <br className="md:hidden" />
           </p>
           <div className="text-center font-bold text-white text-4xl md:text-6xl mb-5">
