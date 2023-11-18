@@ -167,7 +167,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                           </span>
                         </p>
                       </div>
-                      <p className="font-medium break-all capitalize w-full">
+                      <p className="font-medium break-all w-full capitalize-first">
                         {review.content}
                       </p>
                     </div>
