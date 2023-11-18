@@ -5,7 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { esES } from "@clerk/localizations";
 
 export const metadata: Metadata = {
-  title: "Califica Tu Profe",
+  title: "Califica Tu Profe - Califica Profesores y Universidades de Ecuador",
   description: "Califica a Profesores y Universidades de Ecuador",
   icons: {
     icon: "/Logo.ico",
