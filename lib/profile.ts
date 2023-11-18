@@ -41,7 +41,11 @@ export const getProfessor = async (id: string) => {
       },
       include: {
         university: true,
-        reviews: true,
+        reviews: {
+          orderBy: {
+            createdAt: "desc",
+          },
+        },
       },
     });
 
