@@ -25,7 +25,6 @@ export const getUniversity = async (id: string) => {
         },
       },
     });
-
     return university;
   } catch (error) {
     console.error("Error fetching university", error);
