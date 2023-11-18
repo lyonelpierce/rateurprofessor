@@ -11,10 +11,18 @@ export const getUniversity = async (id: string) => {
       include: {
         professors: {
           include: {
-            reviews: true,
+            reviews: {
+              orderBy: {
+                createdAt: "desc",
+              },
+            },
           },
         },
-        reviews: true,
+        reviews: {
+          orderBy: {
+            createdAt: "desc",
+          },
+        },
       },
     });
 
