@@ -55,7 +55,7 @@ const ProfileInfo = ({ professor }: any) => {
             </Link>
           </div>
         </div>
-        <ul className="md:grid grid-cols-4 gap-2 hidden">
+        {/* <ul className="md:grid grid-cols-4 gap-2 hidden">
           <li>
             <FacebookShareButton
               url={`https://califcatuprofe.ec/${pathname}`}
@@ -96,7 +96,7 @@ const ProfileInfo = ({ professor }: any) => {
               <TwitterIcon size={35} round />
             </TwitterShareButton>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </section>
   );
