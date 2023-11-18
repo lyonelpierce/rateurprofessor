@@ -95,7 +95,7 @@ const Hero = () => {
                             <div className="flex justify-center w-[15%]">
                               <GraduationCap className="w-5 h-5 md:w-7 md:h-7" />
                             </div>
-                            <div className="p-1 md:p-4 w-[85%]">
+                            <div className="p-2 md:p-4 w-[85%]">
                               <p className="font-bold capitalize">
                                 {item.name}
                               </p>
