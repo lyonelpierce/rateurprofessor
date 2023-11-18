@@ -90,10 +90,12 @@ const Hero = () => {
                         <Link href={`/universidad/${item.id}`} key={i}>
                           <li
                             key={item.id}
-                            className="flex items-center gap-4 md:p-1 w-full text-xs md:text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
+                            className="flex items-center md:p-1 w-full text-xs md:text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
                           >
-                            <GraduationCap className="ml-4 w-1/12" />
-                            <div className="p-4 md:p-4 w-11/12">
+                            <div className="flex justify-center w-[15%]">
+                              <GraduationCap className="w-5 h-5 md:w-7 md:h-7" />
+                            </div>
+                            <div className="p-1 md:p-4 w-[85%]">
                               <p className="font-bold capitalize">
                                 {item.name}
                               </p>
