@@ -16,9 +16,9 @@ const NavbarProfile = () => {
         <Link href="/" className="flex items-center gap-2">
           <Image src="/Logo.svg" width={50} height={50} alt="Logo Emoji" />
           <h1 className="md:flex text-[1.35rem] font-bold pt-2 hidden text-white">
-            <span className="text-[#fec100]">Califica</span>
-            <span className="text-[#f77f00]">tu</span>
-            <span className="text-[#ec3f3e]">profe</span>
+            <span className="text-green-400">Califica</span>
+            <span className="text-yellow-400">tu</span>
+            <span className="text-red-400">profe</span>
           </h1>
         </Link>
         <div className="flex">
