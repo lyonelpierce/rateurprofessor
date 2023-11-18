@@ -121,6 +121,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     return totalRatings / university.universities.reviews.length;
   };
 
+  console.log(university.universities.reviews);
+
   return (
     <>
       <ProfileInfo university={university} />
@@ -218,43 +220,26 @@ export default async function Page({ params }: { params: { id: string } }) {
                                     "bg-red-400":
                                       rating >= 1 &&
                                       rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
+                                        parseFloat(review[aspect.aspectKey]),
                                     "bg-orange-400":
                                       rating >= 2 &&
                                       rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
+                                        parseFloat(review[aspect.aspectKey]),
+
                                     "bg-yellow-400":
                                       rating >= 3 &&
                                       rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
+                                        parseFloat(review[aspect.aspectKey]),
+
                                     "bg-green-400":
                                       rating >= 4 &&
                                       rating <=
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
+                                        parseFloat(review[aspect.aspectKey]),
+
                                     "bg-green-600":
                                       rating >= 5 &&
                                       rating ===
-                                        parseFloat(
-                                          university.universities.reviews[0][
-                                            aspect.aspectKey
-                                          ]
-                                        ),
+                                        parseFloat(review[aspect.aspectKey]),
                                   })}
                                 ></li>
                               ))}
