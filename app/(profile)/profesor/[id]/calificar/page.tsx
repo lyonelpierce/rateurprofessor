@@ -573,10 +573,10 @@ const RateProfessor = ({ params }: { params: { id: string } }) => {
                 </form>
               </Form>
             ) : (
-              <div className="flex items-center justify-center pt-52 p-5 h-full w-full">
+              <div className="flex items-center justify-center pt-60 p-5 h-full w-full">
                 <p className="flex flex-col justify-center text-center items-center font-medium text-base gap-2 w-full">
-                  <span className="text-2xl font-semibold">
-                    Ya calificaste a este profesor.
+                  <span className="text-xl md:text-2xl font-semibold">
+                    Ya calificaste este profesor.
                   </span>
                   <span>
                     Podras volver a calificar a este profesor dentro de 6 meses.

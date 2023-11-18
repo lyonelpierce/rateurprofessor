@@ -20,6 +20,8 @@ import {
   Users,
 } from "lucide-react";
 
+export const revalidate = 0;
+
 async function getUniversity({
   params,
 }: {

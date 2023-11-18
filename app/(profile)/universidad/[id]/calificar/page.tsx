@@ -1790,8 +1790,8 @@ const RateUniversity = ({ params }: { params: { id: string } }) => {
               </Form>
             ) : (
               <div className="flex items-center justify-center p-5 h-full">
-                <p className="flex flex-col justify-center items-center font-medium text-base gap-2 pt-64">
-                  <span className="text-2xl font-semibold">
+                <p className="flex flex-col justify-center items-center font-medium text-base gap-2 pt-64 text-center">
+                  <span className="text-xl md:text-2xl font-semibold">
                     Ya calificaste esta universidad.
                   </span>
                   <span>
