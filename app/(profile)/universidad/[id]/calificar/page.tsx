@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { UniversityData } from "@/constants/UniversityType";
 import ProfileInfo from "@/components/UniversityInfo";
 import UniversityRate from "@/components/UniversityRate";
-
 import { checkUniversityRating } from "@/lib/rate";
 
 export const revalidate = 0;
