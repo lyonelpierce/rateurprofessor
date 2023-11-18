@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <section className="flex-grow h-full">
       <ProfileInfo professor={professor} />
-      <div className="max-w-7xl mx-auto h-full px-4 md:px-0">
+      <div className="max-w-7xl mx-auto h-full px-4">
         {isNotRated ? (
           <ProfessorRate params={params} />
         ) : (

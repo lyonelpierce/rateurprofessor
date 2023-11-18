@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     <section className="h-full">
       <>
         <ProfileInfo university={university} />
-        <div className="max-w-7xl mx-auto py-10 h-full px-4 md:px-0">
+        <div className="max-w-7xl mx-auto py-10 h-full px-4">
           <div className="flex flex-col gap-4 pt-64">
             <div className="bg-gray-100 p-8 flex flex-col gap-2 items-center justify-center rounded-md">
               <p className="font-semibold text-center">

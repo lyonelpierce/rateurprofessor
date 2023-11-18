@@ -79,7 +79,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <>
       <ProfileInfo professor={professor} />
-      <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4 md:px-0">
+      <div className="flex-grow flex flex-col pt-72 max-w-7xl mx-auto h-full gap-4 px-4">
         <div className="md:flex flex-col md:flex-row gap-8 justify-center items-center pb-16 pt-20 hidden">
           <p className="flex flex-col items-center text-xl md:text-5xl font-bold text-center w-1/3">
             {calculateRating("difficulty")}/5
