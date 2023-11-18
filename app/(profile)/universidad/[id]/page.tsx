@@ -156,7 +156,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             ))}
           </ul>
         </div>
-        <div className="flex h-full flex-col pb-8">
+        <div className="flex h-full flex-col pb-8 md:px-4">
           <p className="font-bold text-xl mb-2">
             {university.universities.reviews.length}{" "}
             {university.universities.reviews.length === 1
