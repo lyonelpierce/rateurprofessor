@@ -120,6 +120,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     return totalRatings / university.universities.reviews.length;
   };
+
   return (
     <>
       <ProfileInfo university={university} />

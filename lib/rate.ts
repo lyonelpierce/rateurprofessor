@@ -150,8 +150,6 @@ export const saveProfessorRating = async (
 
   const isRatingAllowed = await checkProfessorRating(id);
 
-  console.log(isRatingAllowed);
-
   if (!isRatingAllowed) {
     console.error(
       "Rating not allowed: User already submitted a review in the last 6 months."
@@ -241,6 +239,7 @@ export const saveProfessor = async (name: string, universityId: string) => {
     const existingProfessor = await prismadb.professor.findUnique({
       where: {
         name: name,
+        universityId: universityId,
       },
     });
 
