@@ -8,6 +8,8 @@ import ProfileInfo from "@/components/ProfessorInfo";
 import monthNames from "@/constants/months";
 import { ProfessorData } from "@/constants/UniversityType";
 
+export const revalidate = 0;
+
 async function getProfessor({
   params,
 }: {

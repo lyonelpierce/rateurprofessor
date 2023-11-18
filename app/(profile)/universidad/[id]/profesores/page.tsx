@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import ProfileInfo from "@/components/UniversityInfo";
 import { UniversityData } from "@/constants/UniversityType";
 
+export const revalidate = 0;
+
 async function getUniversity({
   params,
 }: {
