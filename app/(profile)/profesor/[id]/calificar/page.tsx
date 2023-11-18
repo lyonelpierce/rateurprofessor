@@ -30,7 +30,7 @@ export async function generateMetadata({
   const professor = await getProfessor({ params });
 
   return {
-    title: "Calificar - " + professor.professors.name + " | Calificatuprofe",
+    title: "Calificar - " + professor.professors.name + " | Califica Tu Profe",
   };
 }
 

@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "Profesores - " + university.universities.name + " | Calificatuprofe",
+      "Profesores - " + university.universities.name + " | Califica Tu Profe",
   };
 }
 

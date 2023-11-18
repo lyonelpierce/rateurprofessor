@@ -30,7 +30,7 @@ export async function generateMetadata({
     title:
       "Añadir Profesor - " +
       university.universities.name +
-      " | Calificatuprofe",
+      " | Califica Tu Profe",
   };
 }
 

@@ -5,6 +5,16 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { UniversityData } from "@/constants/UniversityType";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "next-share";
 
 type ProfileInfoProps = {
   university: UniversityData;
@@ -16,7 +26,7 @@ const ProfileInfo = ({ university }: ProfileInfoProps) => {
   return (
     <section className="fixed mt-20 w-full bg-white shadow-md py-8 z-20">
       <div className="flex max-w-7xl justify-between items-center mx-auto px-4">
-        <div className="flex flex-col gap-1 w-full">
+        <div className="flex flex-col w-full">
           <p className="text-base font-semibold text-muted-foreground">
             {university.universities.location}
           </p>
@@ -58,6 +68,48 @@ const ProfileInfo = ({ university }: ProfileInfoProps) => {
             </Link>
           </div>
         </div>
+        <ul className="md:grid grid-cols-4 gap-2 hidden">
+          <li>
+            <FacebookShareButton
+              url={`https://califcatuprofe.ec/${pathname}`}
+              quote={
+                "Califica a tu profesor y ayuda a otros estudiantes a elegir a los mejores profesores de tu universidad."
+              }
+              hashtag={"#calificatuprofe"}
+            >
+              <FacebookIcon size={35} round />
+            </FacebookShareButton>
+          </li>
+          <li>
+            <FacebookMessengerShareButton
+              url={`https://califcatuprofe.ec/${pathname}`}
+              appId={""}
+            >
+              <FacebookMessengerIcon size={35} round />
+            </FacebookMessengerShareButton>
+          </li>
+          <li>
+            <WhatsappShareButton
+              url={`https://califcatuprofe.ec/${pathname}`}
+              title={
+                "Califica a tu profesor y ayuda a otros estudiantes a elegir a los mejores profesores de tu universidad."
+              }
+              separator=":: "
+            >
+              <WhatsappIcon size={35} round />
+            </WhatsappShareButton>
+          </li>
+          <li>
+            <TwitterShareButton
+              url={`https://califcatuprofe.ec/${pathname}`}
+              title={
+                "Califica a tu profesor y ayuda a otros estudiantes a elegir a los mejores profesores de tu universidad."
+              }
+            >
+              <TwitterIcon size={35} round />
+            </TwitterShareButton>
+          </li>
+        </ul>
       </div>
     </section>
   );

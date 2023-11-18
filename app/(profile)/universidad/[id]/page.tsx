@@ -44,7 +44,7 @@ export async function generateMetadata({
   const university = await getUniversity({ params });
 
   return {
-    title: university.universities.name + " | Calificatuprofe",
+    title: university.universities.name + " | Califica Tu Profe",
   };
 }
 

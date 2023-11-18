@@ -35,7 +35,7 @@ export async function generateMetadata({
       professor.professors.name +
       " - " +
       professor.professors.university.name +
-      " | Calificatuprofe",
+      " | Califica Tu Profe",
   };
 }
 
