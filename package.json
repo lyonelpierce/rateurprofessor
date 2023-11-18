@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/localizations": "^1.26.9",
     "@clerk/nextjs": "^4.25.1",
     "@hookform/resolvers": "^3.3.1",
     "@prisma/client": "^5.3.1",
