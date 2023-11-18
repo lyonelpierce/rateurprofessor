@@ -1,11 +1,10 @@
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import prismadb from "./pismadb";
 import { subMonths, isBefore } from "date-fns";
 
 export const checkUniversityRating = async (universityId: string) => {
   const { userId } = auth();
-  console.log("userId", userId);
   if (!userId) return true;
 
   try {
