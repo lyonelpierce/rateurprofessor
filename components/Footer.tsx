@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer className="relative w-full bg-black p-4 text-white">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between h-12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between md:h-12">
         <p className="font-medium text-sm text-center">
           &copy; {currentYear} Style593 LLC, Todos los derechos reservados.
         </p>

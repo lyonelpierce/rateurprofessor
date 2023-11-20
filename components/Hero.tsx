@@ -92,10 +92,10 @@ const Hero = () => {
                             key={item.id}
                             className="flex items-center md:p-1 w-full text-xs md:text-sm transition-colors hover:bg-blue-600 cursor-pointer hover:text-white"
                           >
-                            <div className="flex justify-center w-[15%]">
+                            <div className="md:flex justify-center hidden md:w-[15%]">
                               <GraduationCap className="w-5 h-5 md:w-7 md:h-7" />
                             </div>
-                            <div className="p-2 md:p-4 w-[85%]">
+                            <div className="p-2 md:p-4 w-[100%] md:w-[85%] px-4 md:px-0">
                               <p className="font-bold capitalize">
                                 {item.name}
                               </p>
