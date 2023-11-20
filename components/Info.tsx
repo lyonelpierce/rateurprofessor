@@ -20,13 +20,15 @@ const Info = () => {
         <ul className="flex flex-col md:flex-row justify-between w-full h-full">
           <li className="flex flex-col items-center justify-center">
             <Image
-              src="/images/Professor.svg"
+              src="/images/University.svg"
               height="300"
               width="300"
               alt="Education"
               className="w-2/3 md:w-full h-full"
             />
-            <p className="font-semibold text-lg">Califica a tus Profesores</p>
+            <p className="font-semibold text-lg">
+              Califica Profesores y Universidades
+            </p>
           </li>
           <li className="flex flex-col items-center justify-center">
             <Image
@@ -40,13 +42,13 @@ const Info = () => {
           </li>
           <li className="flex flex-col items-center justify-center">
             <Image
-              src="/images/University.svg"
+              src="/images/Professor.svg"
               height="300"
               width="300"
               alt="Education"
               className="w-2/3 md:w-full h-full"
             />
-            <p className="font-semibold text-lg">Califica tu Universidad</p>
+            <p className="font-semibold text-lg">Elige a tus Profesores</p>
           </li>
         </ul>
         {!isSignedIn && (
