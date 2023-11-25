@@ -77,8 +77,8 @@ const TermsAndConditions = ({ open, onOpenChange }: any) => {
           Cualquier disputa relacionada con estos Términos estará sujeta a la
           jurisdicción exclusiva de los tribunales competentes en Ecuador. Al
           utilizar &quot;Califica tu Profe&quot;, usted acepta estos Términos de
-          Uso. Si tiene alguna pregunta o inquietud, contáctenos en [dirección
-          de correo electrónico].
+          Uso. Si tiene alguna pregunta o inquietud, contáctenos en
+          lyonel@live.com
         </DialogDescription>
       </DialogContent>
     </Dialog>
