@@ -12,7 +12,7 @@ const TermsAndConditions = ({ open, onOpenChange }: any) => {
     <Dialog open={open} onOpenChange={() => onOpenChange(false)}>
       <DialogContent className="max-w-5xl flex flex-col md:justify-center md:items-center md:p-8 h-full md:h-auto overflow-auto">
         <DialogHeader className="text-2xl font-semibold">
-          Términos de Uso para el Sitio Web Califica tu Profe
+          Términos de Uso para el Sitio Web &ldquo;Califica tu Profe&rdquo;
         </DialogHeader>
         <DialogDescription className="flex flex-col gap-2">
           <span>
