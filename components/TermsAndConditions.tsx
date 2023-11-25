@@ -16,13 +16,12 @@ const TermsAndConditions = ({ open, onOpenChange }: any) => {
         </DialogHeader>
         <DialogDescription className="flex flex-col gap-2">
           <span>
-            Bienvenido al sitio web &quot;Califica tu Profe&quot; &ldquo;el
-            Sitio&rdquo;. Antes de utilizar este Sitio, le recomendamos que lea
-            detenidamente estos Términos de Uso &ldquo;Términos&rdquo; para
-            comprender las condiciones que rigen su acceso y uso del Sitio. Al
-            acceder o utilizar el Sitio, usted acepta estar sujeto a estos
-            Términos. Si no está de acuerdo con alguno de los términos, por
-            favor, no utilice el Sitio.
+            Bienvenido al sitio web &quot;Califica tu Profe&quot;. Antes de
+            utilizar este Sitio, le recomendamos que lea detenidamente estos
+            Términos de Uso para comprender las condiciones que rigen su acceso
+            y uso del Sitio. Al acceder o utilizar el Sitio, usted acepta estar
+            sujeto a estos Términos. Si no está de acuerdo con alguno de los
+            términos, por favor, no utilice el Sitio.
           </span>
           <span className="font-semibold">1. Descripción del Servicio</span>
           &quot;Califica tu Profe&quot; proporciona a los estudiantes la
